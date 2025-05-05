@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yaroslav Volokhodko - CV</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Nordic Night Color Palette */
+    :root {
+      --bg-color: #2E3440;
+      --header-bg: #3B4252;
+      --footer-bg: #4C566A;
+      --text-color: #D8DEE9;
+      --accent-color: #88C0D0;
+      --hover-color: #81A1C1;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Fira Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.5s ease;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 10px;
+    }
+
+    .info-block {
+      background-color: var(--header-bg);
+      color: var(--text-color);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease-out;
+      font-size: 1rem;
+    }
+
+    .info-block strong {
+      color: var(--accent-color);
+      display: inline-block;
+      width: 160px;
+      vertical-align: top;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    img.profile-pic {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      transition: transform 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    img.profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      color: var(--accent-color);
+      font-size: 1.5em;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .btn {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px 5px 0 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--text-color);
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    details {
+      background-color: var(--header-bg);
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      cursor: pointer;
+      padding: 10px;
+      background-color: var(--bg-color);
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    summary:hover {
+      background-color: var(--hover-color);
+    }
+
+    details[open] summary {
+      background-color: var(--hover-color);
+      color: var(--bg-color);
+    }
+
+    details div {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+
+      img.profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      .section-title {
+        font-size: 1.3em;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .section-title {
+        font-size: 1.2em;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      img.profile-pic {
+        width: 100px;
+        height: 100px;
+      }
+
+      .btn {
+        padding: 7px 14px;
+        font-size: 0.85em;
+      }
+
+      footer {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Curriculum Vitae</h1>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2 class="section-title">Personal Information</h2>
+      <div class="info-block">
+        <img src="https://media.licdn.com/dms/image/v2/C4E03AQFkVvCgOfKAow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1620646240191?e=1751500800&v=beta&t=F1wJRQI_gSSVs9d_itQWTpW2nzFEocNnrUW2Ivh_Wbo" alt="Yaroslav Volokhodko Profile Picture" class="profile-pic"><br>
+        <strong>Born:</strong> March 22, 1995<br>
+        <strong>Address:</strong> Waldeggstrasse 90-3-15, 4020 Linz, Austria<br>
+        <strong>Citizenship:</strong> Ukraine<br>
+        <strong>Tel:</strong> +43 670 4069947<br>
+        <strong>Email:</strong> <a href="mailto:yvo_gmx@proton.me">yvo_gmx@proton.me</a>
+      </div>
+      <a href="mailto:yvo_gmx@proton.me" class="btn">Contact Me</a>
+      <a href="https://puginarug.com/" class="btn">See Funny Dog</a>
+    </section>
+
+    <section>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="info-block">
+        <strong>Software Customer Service / Technical Consultant</strong><br>
+        NTS Retail<br>
+        Feb 2023 – Present<br><br>
+
+        <strong>Sales Representative, Export Administrator</strong><br>
+        Polytec EMC Engineering GmbH<br>
+        Nov 2019 – Nov 2022
+      </div>
+
+      <details>
+        <summary>Other Experience</summary>
+        <div class="info-block">
+          <strong>Volunteer Translator (Ukrainian & Russian)</strong><br>
+          Austrian Red Cross (Mar 2022 – Nov 2022)<br><br>
+
+          <strong>Customs Declarant, Digital Coordinator</strong><br>
+          GARTNER KG (Aug 2017 – Nov 2019)<br><br>
+
+          <strong>Shipping Clerk, Administrative Assistant</strong><br>
+          Industrie-Logistik-Linz GmbH (Jan 2016 – Aug 2017)<br><br>
+
+          <strong>Shipping Clerk</strong><br>
+          Gebrüder Weiss GmbH (Jul 2015 – Dec 2016)<br><br>
+
+          <strong>Claims Processor, Logistics Specialist</strong><br>
+          REXEL Austria GmbH (Sep 2014 – Apr 2015)<br><br>
+
+          <strong>Logistics Clerk Apprentice</strong><br>
+          REXEL Austria GmbH (Jul 2011 – Sep 2014)
+        </div>
+      </details>
+    </section>
+
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="info-block">
+        <strong>Private Mentoring – Java & Software Development</strong><br>
+        April 2025 – Present<br>
+        <em>OOP, Java Core, Testing, Design, Project Implementation</em><br><br>
+
+        <strong>Java Software Developer Diploma Program</strong><br>
+        WIFI (Oct 2024 – Jul 2025)<br>
+        <em>Spring Boot, Database Integration, API Design, Project Work</em><br><br>
+
+        <strong>Hamburger Fern-Hochschule</strong><br>
+        Business Informatics (Interrupted)<br>
+        Sept 2023 – Sept 2024<br><br>
+
+        <strong>Johannes Kepler University Linz</strong><br>
+        Business Informatics (Interrupted)<br>
+        Sept 2022 – Feb 2023
+      </div>
+
+      <details>
+        <summary>Other Education</summary>
+        <div class="info-block">
+          <strong>General University Entrance Exam</strong><br>
+          WIFI (Jan 2020 – Oct 2021)<br><br>
+
+          <strong>Master School – Logistics Management</strong><br>
+          WIFI (Sept 2017 – Mar 2019)<br><br>
+
+          <strong>Logistics Specialist Apprenticeship</strong><br>
+          REXEL Austria GmbH (Jul 2011 – Sep 2014)
+        </div>
+      </details>
+    </section>
+
+    <section>
+      <h2 class="section-title">Future Development</h2>
+      <div class="info-block">
+        Need to be added<br><br>
+        <img src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif" alt="Loading Icon" width="50" height="50">
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Personal Projects</h2>
+      <div class="info-block">
+        Need to be added<br><br>
+        <img src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif" alt="Loading Icon" width="50" height="50">
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Yaroslav Volokhodko. All rights reserved.</p>
+    <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" class="btn">Connect on LinkedIn</a>
+    <a href="https://github.com/Yaro-bit" class="btn">See Me on GitHub</a>
+  </footer>
+</body>
+</html>
