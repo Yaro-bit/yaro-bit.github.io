@@ -1,16 +1,9 @@
 # yaro-bit.github.io
 
-This repository is a test for GitHub Pages.  
-The purpose of this project is to experiment with GitHub Pages and to interact with frontend components.  
-Here, different frontend features and interactions are tested and developed.
+> **EN:**  
+> This site is my personal CV (Curriculum Vitae) and web profile, hosted with GitHub Pages.  
+> It serves as a portfolio, an overview of my skills, experience, and projects, and as a playground for frontend experiments.
 
----
-
-
-## yaro-bit.github.io
-
-Dieses Repository ist ein Testprojekt für GitHub Pages.  
-Ziel dieses Projekts ist es, mit GitHub Pages zu experimentieren und mit Frontend-Komponenten zu interagieren.  
-Hier werden verschiedene Frontend-Funktionen und Interaktionen getestet und entwickelt.
-
----
+> **DE:**  
+> Diese Seite ist mein persönlicher Lebenslauf (CV) und Webprofil, bereitgestellt über GitHub Pages.  
+> Sie dient als Portfolio, Übersicht über meine Fähigkeiten, Erfahrungen und Projekte sowie als Testumgebung für Frontend-Experimente.
