@@ -7,7 +7,7 @@ Here, different frontend features and interactions are tested and developed.
 ---
 
 
-## Deutsch
+## yaro-bit.github.io
 
 Dieses Repository ist ein Testprojekt für GitHub Pages.  
 Ziel dieses Projekts ist es, mit GitHub Pages zu experimentieren und mit Frontend-Komponenten zu interagieren.  
