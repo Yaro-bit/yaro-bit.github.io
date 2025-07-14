@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yaroslav Volokhodko - Software Developer</title>
   
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -46,6 +47,7 @@
       padding: 0 20px;
     }
 
+    /* Header */
     .header {
       background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
       padding: 60px 0;
@@ -154,6 +156,7 @@
       color: var(--bg-primary);
     }
 
+    /* Main Content */
     .main-content {
       padding: 80px 0;
     }
@@ -182,6 +185,7 @@
       border-radius: 2px;
     }
 
+    /* Grid Layouts */
     .grid {
       display: grid;
       gap: 30px;
@@ -195,6 +199,7 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
+    /* Cards */
     .card {
       background: var(--bg-secondary);
       border-radius: 16px;
@@ -210,6 +215,7 @@
       border-color: var(--accent-primary);
     }
 
+    /* Experience Cards */
     .experience-item {
       position: relative;
       padding-left: 30px;
@@ -261,6 +267,7 @@
       line-height: 1.6;
     }
 
+    /* Skills */
     .skills-category {
       margin-bottom: 40px;
     }
@@ -305,6 +312,7 @@
       border-color: var(--text-muted);
     }
 
+    /* Education Timeline */
     .education-timeline {
       position: relative;
       padding-left: 40px;
@@ -364,6 +372,7 @@
       font-style: italic;
     }
 
+    /* Languages */
     .languages-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -388,6 +397,7 @@
       font-size: 0.9rem;
     }
 
+    /* Personal Values */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -413,6 +423,7 @@
       margin-bottom: 10px;
     }
 
+    /* Footer */
     .footer {
       background: var(--bg-secondary);
       padding: 50px 0;
@@ -466,6 +477,7 @@
       animation: fadeInUp 0.6s ease-out;
     }
 
+    /* Responsive Design */
     @media (max-width: 768px) {
       .header h1 {
         font-size: 2.5rem;
@@ -524,10 +536,11 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="container">
       <div class="profile-container">
-        <img src="https://media.licdn.com/dms/image/v2/C4E03AQFkVvCgOfKAow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1620646240191?e=1758153600&v=beta&t=9wHe-yQVyjbQm-Ilc6HUDaos3UzX5pu8MSYXxaI-yc4" alt="Yaroslav Volokhodko" class="profile-image">
+        <img src="./avatar.png" alt="Yaroslav Volokhodko" class="profile-image">
         
         <h1>Yaroslav Volokhodko</h1>
         <p class="subtitle">Java Software Developer & Technical Consultant</p>
@@ -561,9 +574,11 @@
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="main-content">
     <div class="container">
       
+      <!-- About Section -->
       <section class="section fade-in">
         <h2 class="section-title">About Me</h2>
         <div class="card">
@@ -571,6 +586,7 @@
         </div>
       </section>
 
+      <!-- Experience Section -->
       <section class="section fade-in">
         <h2 class="section-title">Professional Experience</h2>
         <div class="grid grid-1">
@@ -630,6 +646,7 @@
         </div>
       </section>
 
+      <!-- Skills Section -->
       <section class="section fade-in">
         <h2 class="section-title">Technical Skills</h2>
         <div class="grid grid-2">
@@ -689,6 +706,7 @@
         </div>
       </section>
 
+      <!-- Education Section -->
       <section class="section fade-in">
         <h2 class="section-title">Education & Training</h2>
         <div class="education-timeline">
@@ -738,6 +756,7 @@
         </div>
       </section>
 
+      <!-- Languages & Certifications -->
       <section class="section fade-in">
         <div class="grid grid-2">
           
@@ -784,6 +803,7 @@
         </div>
       </section>
 
+      <!-- Personal Values -->
       <section class="section fade-in">
         <h2 class="section-title">Core Values & Interests</h2>
         <div class="grid grid-3">
@@ -860,6 +880,7 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -886,6 +907,7 @@
   </footer>
 
   <script>
+    // Add smooth scrolling animation on scroll
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -900,6 +922,7 @@
       });
     }, observerOptions);
 
+    // Observe all sections for animation
     document.querySelectorAll('.section').forEach(section => {
       section.style.opacity = '0';
       section.style.transform = 'translateY(30px)';
@@ -907,6 +930,7 @@
       observer.observe(section);
     });
 
+    // Add hover effects for skill tags
     document.querySelectorAll('.skill-tag').forEach(tag => {
       tag.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-2px)';
