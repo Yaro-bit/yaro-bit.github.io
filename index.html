@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* ===== KEEPING YOUR ORIGINAL COLORS ===== */
     :root {
       --bg-primary: #1a1e29;
       --bg-secondary: #242936;
@@ -35,6 +36,7 @@
       --gradient-surface: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
     }
 
+    /* ===== BASE STYLES ===== */
     * {
       margin: 0;
       padding: 0;
@@ -51,12 +53,323 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* ===== UTILITY CLASSES ===== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
+    /* Margin utilities */
+    .mb-4 { margin-bottom: 4px; }
+    .mb-8 { margin-bottom: 8px; }
+    .mb-12 { margin-bottom: 12px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-20 { margin-bottom: 20px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mb-32 { margin-bottom: 32px; }
+    .mb-40 { margin-bottom: 40px; }
+    .mb-48 { margin-bottom: 48px; }
+
+    /* Transition utilities */
+    .transition-all { transition: all 0.3s ease; }
+    .transition-fast { transition: all 0.2s ease; }
+
+    /* Text utilities */
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ===== COMPONENT CLASSES ===== */
+    
+    /* Section layouts */
+    .section {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .section-title--sm {
+      font-size: 1.6rem;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-primary) 0%, transparent 100%);
+    }
+
+    /* Grid system */
+    .grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .grid--2 { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+    .grid--3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid--4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+    /* Card component */
+    .card {
+      background: var(--gradient-surface);
+      border: 1px solid var(--border-primary);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(79, 139, 249, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 12px 32px var(--shadow-lg);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Button component */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+
+    .btn--sm {
+      padding: 10px 16px;
+      font-size: 0.9rem;
+    }
+
+    .btn--full {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(79, 139, 249, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(79, 139, 249, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-primary);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-quaternary);
+      border-color: var(--border-secondary);
+    }
+
+    /* Surface item component (replaces info-item, value-item, etc.) */
+    .surface-item {
+      padding: 24px 20px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-primary);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .surface-item:hover {
+      background: var(--bg-quaternary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    .surface-item--center {
+      text-align: center;
+    }
+
+    .surface-item--compact {
+      padding: 16px 20px;
+    }
+
+    /* Timeline component (for both experience and education) */
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 40px;
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-primary);
+      border-radius: 50%;
+      border: 3px solid var(--bg-primary);
+    }
+
+    .timeline-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .timeline-subtitle {
+      font-size: 1.1rem;
+      color: var(--accent-primary);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .timeline-period {
+      display: inline-block;
+      background: var(--bg-tertiary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid var(--border-primary);
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    /* Badge component */
+    .badge {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(79, 139, 249, 0.3);
+    }
+
+    .badge--primary {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    /* Skill badge variants */
+    .skill-badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .skill-badge--expert {
+      background: var(--accent-success);
+      color: var(--bg-primary);
+    }
+
+    .skill-badge--advanced {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    .skill-badge--intermediate {
+      background: var(--accent-warning);
+      color: var(--bg-primary);
+    }
+
+    .skill-badge--basic {
+      background: var(--bg-quaternary);
+      color: var(--text-muted);
+      border: 1px solid var(--border-secondary);
+    }
+
+    /* Progress bar component */
+    .progress-bar {
+      width: 80px;
+      height: 6px;
+      background: var(--bg-quaternary);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 3px;
+      transition: width 1s ease-out;
+    }
+
+    /* Icon utilities */
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-primary);
+    }
+
+    .icon--sm { width: 20px; font-size: 1rem; }
+    .icon--md { width: 24px; font-size: 1.5rem; }
+    .icon--lg { font-size: 2rem; }
+
+    /* ===== SPECIFIC SECTIONS ===== */
+    
+    /* Header */
     .header {
       background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
       padding: 100px 0;
@@ -76,8 +389,7 @@
       bottom: 0;
       background: 
         radial-gradient(circle at 20% 30%, rgba(79, 139, 249, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(79, 139, 249, 0.03) 0%, rgba(59, 130, 246, 0.05) 100%);
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
     }
 
     .header::after {
@@ -157,18 +469,6 @@
       transform: scale(1.1);
     }
 
-    .profile-badge {
-      background: var(--gradient-primary);
-      color: white;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(79, 139, 249, 0.3);
-    }
-
     .header-main {
       text-align: left;
       padding: 0 20px;
@@ -239,6 +539,7 @@
       flex-wrap: wrap;
     }
 
+    /* Contact section */
     .contact-section {
       background: rgba(79, 139, 249, 0.05);
       border: 1px solid rgba(79, 139, 249, 0.1);
@@ -303,243 +604,18 @@
       transform: translateX(4px);
     }
 
-    .contact-item i {
-      width: 20px;
-      text-align: center;
-      color: var(--accent-primary);
-      font-size: 1rem;
-    }
-
     .contact-actions {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      border: 1px solid transparent;
-    }
-
-    .contact-btn-primary {
-      background: var(--gradient-primary);
-      color: white;
-      box-shadow: 0 4px 12px rgba(79, 139, 249, 0.3);
-    }
-
-    .contact-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(79, 139, 249, 0.4);
-    }
-
-    .contact-btn-secondary {
-      background: transparent;
-      border-color: var(--accent-primary);
-      color: var(--accent-primary);
-    }
-
-    .contact-btn-secondary:hover {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.01em;
-    }
-
-    .btn-primary {
-      background: var(--gradient-primary);
-      color: white;
-      box-shadow: 0 4px 12px rgba(79, 139, 249, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(79, 139, 249, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1.5px solid var(--accent-primary);
-      color: var(--accent-primary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .btn-ghost {
-      background: var(--bg-tertiary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-primary);
-    }
-
-    .btn-ghost:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--border-secondary);
-    }
-
-    /* Main Content */
+    /* Main content */
     .main-content {
       padding: 100px 0;
     }
 
-    .section {
-      margin-bottom: 100px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent-primary) 0%, transparent 100%);
-    }
-
-    .grid {
-      display: grid;
-      gap: 32px;
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    /* Enhanced Cards */
-    .card {
-      background: var(--gradient-surface);
-      border: 1px solid var(--border-primary);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(79, 139, 249, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-primary);
-      box-shadow: 0 12px 32px var(--shadow-lg);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Professional Experience */
-    .experience-item {
-      border-left: 3px solid var(--accent-primary);
-      padding-left: 24px;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    .experience-item::before {
-      content: '';
-      position: absolute;
-      left: -7px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      background: var(--accent-primary);
-      border-radius: 50%;
-      border: 3px solid var(--bg-primary);
-    }
-
-    .experience-header {
-      margin-bottom: 16px;
-    }
-
-    .experience-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .experience-company {
-      font-size: 1.1rem;
-      color: var(--accent-primary);
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .experience-period {
-      display: inline-block;
-      background: var(--bg-tertiary);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      border: 1px solid var(--border-primary);
-    }
-
-    .experience-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-top: 12px;
-    }
-
-    /* Enhanced Skills Section */
+    /* Skills section */
     .skills-category {
       margin-bottom: 32px;
     }
@@ -549,12 +625,6 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 20px;
-    }
-
-    .skills-icon {
-      width: 24px;
-      height: 24px;
-      color: var(--accent-primary);
     }
 
     .skills-title {
@@ -595,52 +665,7 @@
       gap: 8px;
     }
 
-    .skill-badge {
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .skill-badge.expert {
-      background: var(--accent-success);
-      color: var(--bg-primary);
-    }
-
-    .skill-badge.advanced {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .skill-badge.intermediate {
-      background: var(--accent-warning);
-      color: var(--bg-primary);
-    }
-
-    .skill-badge.basic {
-      background: var(--bg-quaternary);
-      color: var(--text-muted);
-      border: 1px solid var(--border-secondary);
-    }
-
-    .skill-progress {
-      width: 80px;
-      height: 6px;
-      background: var(--bg-quaternary);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .skill-progress-fill {
-      height: 100%;
-      background: var(--gradient-primary);
-      border-radius: 3px;
-      transition: width 1s ease-out;
-    }
-
-    /* Education Timeline */
+    /* Education specific */
     .education-timeline {
       position: relative;
       padding-left: 32px;
@@ -683,67 +708,7 @@
       transform: translateX(4px);
     }
 
-    .education-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .education-institution {
-      color: var(--accent-primary);
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .education-period {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 12px;
-    }
-
-    .education-description {
-      color: var(--text-secondary);
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    /* Languages & Certifications */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .info-item {
-      text-align: center;
-      padding: 24px 20px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-primary);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .info-item:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-    }
-
-    .info-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .info-subtitle {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /*Values */
+    /* Values grid */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -846,7 +811,7 @@
       color: var(--text-subtle);
     }
 
-    /* Animations */
+    /* Animation */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -862,7 +827,11 @@
       animation: fadeInUp 0.6s ease-out;
     }
 
-    /* Design */
+    @keyframes fillProgress {
+      from { width: 0%; }
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
     @media (max-width: 1024px) {
       .header-content {
         grid-template-columns: 1fr;
@@ -895,137 +864,38 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0 20px;
-      }
-
-      .header {
-        padding: 80px 0;
-        min-height: 70vh;
-      }
-
-      .name {
-        font-size: 2.8rem;
-      }
-
-      .title {
-        font-size: 1.3rem;
-        padding-left: 0;
-      }
-
-      .summary {
-        font-size: 1rem;
-        padding: 16px;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 24px;
-      }
-
-      .main-content {
-        padding: 60px 0;
-      }
-
-      .section {
-        margin-bottom: 60px;
-      }
-
-      .header-actions {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .contact-actions {
-        gap: 8px;
-      }
-
-      .contact-btn {
-        font-size: 0.85rem;
-        padding: 8px 12px;
-      }
+      .container { padding: 0 20px; }
+      .header { padding: 80px 0; min-height: 70vh; }
+      .name { font-size: 2.8rem; }
+      .title { font-size: 1.3rem; padding-left: 0; }
+      .summary { font-size: 1rem; padding: 16px; }
+      .section-title { font-size: 1.8rem; }
+      .grid--2 { grid-template-columns: 1fr; }
+      .card { padding: 24px; }
+      .main-content { padding: 60px 0; }
+      .section { margin-bottom: 60px; }
+      .header-actions { flex-direction: column; gap: 12px; width: 100%; }
+      .btn { width: 100%; justify-content: center; }
+      .contact-actions { gap: 8px; }
+      .btn--sm { font-size: 0.85rem; padding: 8px 12px; }
     }
 
     @media (max-width: 480px) {
-      .name {
-        font-size: 2.2rem;
-      }
-
-      .title {
-        font-size: 1.1rem;
-      }
-
-      .profile-image {
-        width: 120px;
-        height: 120px;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      .experience-item {
-        padding-left: 20px;
-      }
-
-      .education-timeline {
-        padding-left: 24px;
-      }
-
-      .contact-section {
-        padding: 24px 20px;
-      }
-
-      .header {
-        padding: 60px 0;
-        min-height: 60vh;
-      }
-
-      .summary {
-        font-size: 0.95rem;
-        padding: 12px;
-      }
+      .name { font-size: 2.2rem; }
+      .title { font-size: 1.1rem; }
+      .profile-image { width: 120px; height: 120px; }
+      .card { padding: 20px; }
+      .timeline-item { padding-left: 20px; }
+      .education-timeline { padding-left: 24px; }
+      .contact-section { padding: 24px 20px; }
+      .header { padding: 60px 0; min-height: 60vh; }
+      .summary { font-size: 0.95rem; padding: 12px; }
     }
 
-    /* Loading Animation */
-    .skill-progress-fill {
-      animation: fillProgress 2s ease-out forwards;
-    }
-
-    @keyframes fillProgress {
-      from { width: 0%; }
-    }
-
-    /* Styles */
     @media print {
-      .header-actions,
-      .social-links,
-      .btn {
-        display: none;
-      }
-      
-      .card {
-        border: 1px solid #ddd;
-        box-shadow: none;
-      }
-      
-      body {
-        background: white;
-        color: black;
-      }
+      .header-actions, .social-links, .btn { display: none; }
+      .card { border: 1px solid #ddd; box-shadow: none; }
+      body { background: white; color: black; }
     }
   </style>
 </head>
@@ -1040,6 +910,8 @@
           <div class="profile-image-container">
             <img src="./avatar.png" alt="Yaroslav Volokhodko" class="profile-image">
           </div>
+          <span class="badge badge--primary">Open to Work</span>
+        </div>
         
         <div class="header-main">
           <h1 class="name">Yaroslav Volokhodko</h1>
@@ -1073,29 +945,29 @@
           
           <div class="contact-info">
             <a href="mailto:yvo_gmx@proton.me" class="contact-item">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope icon icon--sm"></i>
               <span>yvo_gmx@proton.me</span>
             </a>
             <a href="tel:+4367040699947" class="contact-item">
-              <i class="fas fa-phone"></i>
+              <i class="fas fa-phone icon icon--sm"></i>
               <span>+43 670 4069947</span>
             </a>
             <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt icon icon--sm"></i>
               <span>Linz, Austria</span>
             </div>
             <div class="contact-item">
-              <i class="fas fa-flag"></i>
+              <i class="fas fa-flag icon icon--sm"></i>
               <span>Ukrainian Citizen</span>
             </div>
           </div>
           
           <div class="contact-actions">
-            <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" class="contact-btn contact-btn-primary" target="_blank">
+            <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" class="btn btn--sm btn-primary btn--full" target="_blank">
               <i class="fab fa-linkedin"></i>
               LinkedIn Profile
             </a>
-            <a href="#skills" class="contact-btn contact-btn-secondary">
+            <a href="#skills" class="btn btn--sm btn-secondary btn--full">
               <i class="fas fa-code"></i>
               View Skills
             </a>
@@ -1120,46 +992,38 @@
         <div class="card">
           <div class="card-content">
             
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="experience-title">Technical Support Specialist & Customer Consultant</div>
-                <div class="experience-company">NTS Retail</div>
-                <span class="experience-period">Feb 2023 – Present</span>
-              </div>
-              <div class="experience-description">
+            <div class="timeline-item">
+              <div class="timeline-title">Technical Support Specialist & Customer Consultant</div>
+              <div class="timeline-subtitle">NTS Retail</div>
+              <span class="timeline-period">Feb 2023 – Present</span>
+              <div class="timeline-description">
                 Provide comprehensive technical support for enterprise telecom POS systems through Jira, email, phone, and web conferences. Collaborate with development and project teams to troubleshoot complex technical issues. Utilize SQL, Postman, Wildfly, Keycloak, OpenShift, Helm, and RabbitMQ for system analysis and problem resolution while developing Java programming skills.
               </div>
             </div>
 
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="experience-title">Sales Representative & Export Operations Manager</div>
-                <div class="experience-company">Polytec EMC Engineering GmbH</div>
-                <span class="experience-period">Nov 2019 – Nov 2022</span>
-              </div>
-              <div class="experience-description">
+            <div class="timeline-item">
+              <div class="timeline-title">Sales Representative & Export Operations Manager</div>
+              <div class="timeline-subtitle">Polytec EMC Engineering GmbH</div>
+              <span class="timeline-period">Nov 2019 – Nov 2022</span>
+              <div class="timeline-description">
                 Managed comprehensive customer relationships in German and English markets, overseeing complete order lifecycle from processing to delivery. Handled complex export documentation, ERP system maintenance, and international compliance requirements. Led project coordination, travel logistics, and trade fair organization while maintaining strict adherence to customs regulations and sanctions protocols.
               </div>
             </div>
 
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="experience-title">Volunteer Technical Translator</div>
-                <div class="experience-company">Austrian Red Cross</div>
-                <span class="experience-period">Mar 2022 – Nov 2022</span>
-              </div>
-              <div class="experience-description">
+            <div class="timeline-item">
+              <div class="timeline-title">Volunteer Technical Translator</div>
+              <div class="timeline-subtitle">Austrian Red Cross</div>
+              <span class="timeline-period">Mar 2022 – Nov 2022</span>
+              <div class="timeline-description">
                 Provided critical translation services for Ukrainian and Russian speakers during humanitarian crisis response. Coordinated with law enforcement and humanitarian organizations to facilitate effective communication. Organized community support networks and managed digital communication channels for refugee assistance programs.
               </div>
             </div>
 
-            <div class="experience-item">
-              <div class="experience-header">
-                <div class="experience-title">Customs Operations Specialist & Digital Coordinator</div>
-                <div class="experience-company">GARTNER KG</div>
-                <span class="experience-period">Aug 2017 – Nov 2019</span>
-              </div>
-              <div class="experience-description">
+            <div class="timeline-item">
+              <div class="timeline-title">Customs Operations Specialist & Digital Coordinator</div>
+              <div class="timeline-subtitle">GARTNER KG</div>
+              <span class="timeline-period">Aug 2017 – Nov 2019</span>
+              <div class="timeline-description">
                 Managed end-to-end customs and international trade operations, ensuring full compliance with Austrian and EU regulations. Led digital transformation initiatives to optimize logistics, financial, and business processes. Specialized in indirect tax reporting, customs audit preparation, and AEO certification support.
               </div>
             </div>
@@ -1175,49 +1039,49 @@
           <div class="section-line"></div>
         </div>
         
-        <div class="grid grid-2">
+        <div class="grid grid--2">
           
           <div class="card">
             <div class="card-content">
               <div class="skills-category">
                 <div class="skills-header">
-                  <i class="fas fa-code skills-icon"></i>
+                  <i class="fas fa-code icon icon--md"></i>
                   <h3 class="skills-title">Programming & Development</h3>
                 </div>
                 <div class="skills-grid">
                   <div class="skill-item">
                     <span class="skill-name">Java (Core, OOP Fundamentals)</span>
                     <div class="skill-level">
-                      <span class="skill-badge intermediate">Learning</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 60%"></div>
+                      <span class="skill-badge skill-badge--intermediate">Learning</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Spring Boot & Frameworks</span>
                     <div class="skill-level">
-                      <span class="skill-badge intermediate">Developing</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 45%"></div>
+                      <span class="skill-badge skill-badge--intermediate">Developing</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">SQL & Database Basics</span>
                     <div class="skill-level">
-                      <span class="skill-badge intermediate">Intermediate</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 70%"></div>
+                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Testing & Debugging</span>
                     <div class="skill-level">
-                      <span class="skill-badge basic">Basic</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 40%"></div>
+                      <span class="skill-badge skill-badge--basic">Basic</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
                       </div>
                     </div>
                   </div>
@@ -1230,43 +1094,43 @@
             <div class="card-content">
               <div class="skills-category">
                 <div class="skills-header">
-                  <i class="fas fa-server skills-icon"></i>
+                  <i class="fas fa-server icon icon--md"></i>
                   <h3 class="skills-title">DevOps & Tools (Learning)</h3>
                 </div>
                 <div class="skills-grid">
                   <div class="skill-item">
                     <span class="skill-name">OpenShift & Kubernetes</span>
                     <div class="skill-level">
-                      <span class="skill-badge basic">Basic</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 35%"></div>
+                      <span class="skill-badge skill-badge--basic">Basic</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Wildfly & Application Servers</span>
                     <div class="skill-level">
-                      <span class="skill-badge intermediate">Intermediate</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 55%"></div>
+                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 55%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Message Queuing (RabbitMQ)</span>
                     <div class="skill-level">
-                      <span class="skill-badge basic">Basic</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 30%"></div>
+                      <span class="skill-badge skill-badge--basic">Basic</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Security (Keycloak)</span>
                     <div class="skill-level">
-                      <span class="skill-badge basic">Basic</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 35%"></div>
+                      <span class="skill-badge skill-badge--basic">Basic</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 35%"></div>
                       </div>
                     </div>
                   </div>
@@ -1279,43 +1143,43 @@
             <div class="card-content">
               <div class="skills-category">
                 <div class="skills-header">
-                  <i class="fas fa-tools skills-icon"></i>
+                  <i class="fas fa-tools icon icon--md"></i>
                   <h3 class="skills-title">Professional Tools & Systems</h3>
                 </div>
                 <div class="skills-grid">
                   <div class="skill-item">
                     <span class="skill-name">Jira & Project Management</span>
                     <div class="skill-level">
-                      <span class="skill-badge expert">Expert</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 95%"></div>
+                      <span class="skill-badge skill-badge--expert">Expert</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Postman & API Testing</span>
                     <div class="skill-level">
-                      <span class="skill-badge advanced">Advanced</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 80%"></div>
+                      <span class="skill-badge skill-badge--advanced">Advanced</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">SAP & ERP Systems</span>
                     <div class="skill-level">
-                      <span class="skill-badge expert">Expert</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 90%"></div>
+                      <span class="skill-badge skill-badge--expert">Expert</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Git & Version Control</span>
                     <div class="skill-level">
-                      <span class="skill-badge intermediate">Intermediate</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 60%"></div>
+                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
                       </div>
                     </div>
                   </div>
@@ -1328,43 +1192,43 @@
             <div class="card-content">
               <div class="skills-category">
                 <div class="skills-header">
-                  <i class="fas fa-chart-line skills-icon"></i>
+                  <i class="fas fa-chart-line icon icon--md"></i>
                   <h3 class="skills-title">Business & Leadership</h3>
                 </div>
                 <div class="skills-grid">
                   <div class="skill-item">
                     <span class="skill-name">Process Optimization</span>
                     <div class="skill-level">
-                      <span class="skill-badge expert">Expert</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 95%"></div>
+                      <span class="skill-badge skill-badge--expert">Expert</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 95%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Technical Leadership</span>
                     <div class="skill-level">
-                      <span class="skill-badge advanced">Advanced</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 85%"></div>
+                      <span class="skill-badge skill-badge--advanced">Advanced</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Customer Relations</span>
                     <div class="skill-level">
-                      <span class="skill-badge expert">Expert</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 90%"></div>
+                      <span class="skill-badge skill-badge--expert">Expert</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
                       </div>
                     </div>
                   </div>
                   <div class="skill-item">
                     <span class="skill-name">Quality Management</span>
                     <div class="skill-level">
-                      <span class="skill-badge advanced">Advanced</span>
-                      <div class="skill-progress">
-                        <div class="skill-progress-fill" style="width: 85%"></div>
+                      <span class="skill-badge skill-badge--advanced">Advanced</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
                       </div>
                     </div>
                   </div>
@@ -1388,60 +1252,60 @@
             <div class="education-timeline">
               
               <div class="education-item">
-                <div class="education-title">Advanced Java Development Mentoring</div>
-                <div class="education-institution">Private Technical Mentoring Program</div>
-                <div class="education-period">Januar 2025 – Present</div>
-                <div class="education-description">
+                <div class="timeline-title">Advanced Java Development Mentoring</div>
+                <div class="timeline-subtitle">Private Technical Mentoring Program</div>
+                <div class="timeline-period">Januar 2025 – Present</div>
+                <div class="timeline-description">
                   Intensive one-on-one mentoring program focusing on Java fundamentals, object-oriented programming principles, 
                   testing methodologies, software design patterns, and hands-on project development to build professional development skills.
                 </div>
               </div>
 
               <div class="education-item">
-                <div class="education-title">Java Software Developer Certification Program</div>
-                <div class="education-institution">WIFI Professional Education Center</div>
-                <div class="education-period">September 2024 – Jul 2025</div>
-                <div class="education-description">
+                <div class="timeline-title">Java Software Developer Certification Program</div>
+                <div class="timeline-subtitle">WIFI Professional Education Center</div>
+                <div class="timeline-period">September 2024 – Jul 2025</div>
+                <div class="timeline-description">
                   Comprehensive Java development program covering Spring Boot framework, database integration fundamentals, 
                   RESTful API development, and practical project implementation to transition into software development.
                 </div>
               </div>
 
               <div class="education-item">
-                <div class="education-title">Business Informatics Studies (interrupted)</div>
-                <div class="education-institution">Hamburger Fern-Hochschule - Johannes Kepler University</div>
-                <div class="education-period">Sept 2022 – Aug 2024</div>
-                <div class="education-description">
+                <div class="timeline-title">Business Informatics Studies (interrupted)</div>
+                <div class="timeline-subtitle">Hamburger Fern-Hochschule - Johannes Kepler University</div>
+                <div class="timeline-period">Sept 2022 – Aug 2024</div>
+                <div class="timeline-description">
                   Advanced distance learning program focusing on business information systems, 
                   digital transformation strategies, and enterprise software architecture.
                 </div>
               </div>
 
               <div class="education-item">
-                <div class="education-title">University Entrance Qualification</div>
-                <div class="education-institution">WIFI Professional Education Center</div>
-                <div class="education-period">Jan 2020 – Oct 2021</div>
-                <div class="education-description">
+                <div class="timeline-title">University Entrance Qualification</div>
+                <div class="timeline-subtitle">WIFI Professional Education Center</div>
+                <div class="timeline-period">Jan 2020 – Oct 2021</div>
+                <div class="timeline-description">
                   Comprehensive academic preparation program covering German language proficiency, 
                   advanced mathematics, and English language certification for higher education access.
                 </div>
               </div>
 
               <div class="education-item">
-                <div class="education-title">Master Certificate in Logistics Management</div>
-                <div class="education-institution">WIFI Professional Education Center</div>
-                <div class="education-period">Sept 2017 – Mar 2019</div>
-                <div class="education-description">
+                <div class="timeline-title">Master Certificate in Logistics Management</div>
+                <div class="timeline-subtitle">WIFI Professional Education Center</div>
+                <div class="timeline-period">Sept 2017 – Mar 2019</div>
+                <div class="timeline-description">
                   Advanced management program specializing in supply chain optimization, warehouse management systems, 
                   international logistics operations, and strategic process improvement methodologies.
                 </div>
               </div>
 
               <div class="education-item">
-                <div class="education-title">Certified Logistics Specialist</div>
-                <div class="education-institution">REXEL Austria GmbH</div>
-                <div class="education-period">Jul 2011 – Sep 2014</div>
-                <div class="education-description">
+                <div class="timeline-title">Certified Logistics Specialist</div>
+                <div class="timeline-subtitle">REXEL Austria GmbH</div>
+                <div class="timeline-period">Jul 2011 – Sep 2014</div>
+                <div class="timeline-description">
                   Professional apprenticeship program in logistics operations, warehouse management, 
                   inventory control systems, and international trade documentation procedures.
                 </div>
@@ -1454,28 +1318,28 @@
 
       <!-- Languages & Certifications -->
       <section class="section fade-in">
-        <div class="grid grid-2">
+        <div class="grid grid--2">
           
           <div class="card">
             <div class="card-content">
               <div class="section-header">
-                <h3 class="section-title" style="font-size: 1.6rem;">Language Proficiency</h3>
+                <h3 class="section-title section-title--sm">Language Proficiency</h3>
                 <div class="section-line"></div>
               </div>
-              <div class="info-grid">
-                <div class="info-item">
+              <div class="grid grid--4">
+                <div class="surface-item surface-item--center">
                   <div class="info-title">German</div>
                   <div class="info-subtitle">Native Proficiency</div>
                 </div>
-                <div class="info-item">
+                <div class="surface-item surface-item--center">
                   <div class="info-title">Ukrainian</div>
                   <div class="info-subtitle">Native Proficiency</div>
                 </div>
-                <div class="info-item">
+                <div class="surface-item surface-item--center">
                   <div class="info-title">English</div>
                   <div class="info-subtitle">Professional Working</div>
                 </div>
-                <div class="info-item">
+                <div class="surface-item surface-item--center">
                   <div class="info-title">Russian</div>
                   <div class="info-subtitle">Professional Working</div>
                 </div>
@@ -1486,23 +1350,23 @@
           <div class="card">
             <div class="card-content">
               <div class="section-header">
-                <h3 class="section-title" style="font-size: 1.6rem;">Professional Certifications</h3>
+                <h3 class="section-title section-title--sm">Professional Certifications</h3>
                 <div class="section-line"></div>
               </div>
-              <div style="space-y: 24px;">
-                <div class="info-item" style="text-align: left; margin-bottom: 16px;">
+              <div style="display: grid; gap: 16px;">
+                <div class="surface-item">
                   <div class="info-title">Certified Professional Instructor</div>
                   <div class="info-subtitle">Trade, Logistics & Transport Operations • WIFI Wels (2019)</div>
                 </div>
-                <div class="info-item" style="text-align: left; margin-bottom: 16px;">
+                <div class="surface-item">
                   <div class="info-title">Certified Customs Specialist P36</div>
                   <div class="info-subtitle">International Trade & Customs Procedures • Austria Customs Academy (2018)</div>
                 </div>
-                <div class="info-item" style="text-align: left; margin-bottom: 16px;">
+                <div class="surface-item">
                   <div class="info-title">Licensed Crane Operator</div>
                   <div class="info-subtitle">Heavy Equipment Operations • Steel Foundation (2016)</div>
                 </div>
-                <div class="info-item" style="text-align: left;">
+                <div class="surface-item">
                   <div class="info-title">Certified Forklift Operator</div>
                   <div class="info-subtitle">Material Handling Equipment • TBF (2013)</div>
                 </div>
@@ -1520,7 +1384,7 @@
           <div class="section-line"></div>
         </div>
         
-        <div class="grid grid-3">
+        <div class="grid grid--3">
           
           <div class="card">
             <div class="card-content">
@@ -1651,7 +1515,7 @@
             entry.target.style.transform = 'translateY(0)';
             
             // Animate skill progress bars
-            const progressBars = entry.target.querySelectorAll('.skill-progress-fill');
+            const progressBars = entry.target.querySelectorAll('.progress-fill');
             progressBars.forEach(bar => {
               setTimeout(() => {
                 bar.style.transition = 'width 1.5s ease-out';
@@ -1697,14 +1561,14 @@
       // Skill item interactions
       document.querySelectorAll('.skill-item').forEach(item => {
         item.addEventListener('mouseenter', function() {
-          const progressBar = this.querySelector('.skill-progress-fill');
+          const progressBar = this.querySelector('.progress-fill');
           if (progressBar) {
             progressBar.style.boxShadow = '0 0 10px rgba(79, 139, 249, 0.5)';
           }
         });
         
         item.addEventListener('mouseleave', function() {
-          const progressBar = this.querySelector('.skill-progress-fill');
+          const progressBar = this.querySelector('.progress-fill');
           if (progressBar) {
             progressBar.style.boxShadow = 'none';
           }
@@ -1713,7 +1577,7 @@
 
       // Add loading animation to progress bars
       setTimeout(() => {
-        document.querySelectorAll('.skill-progress-fill').forEach(bar => {
+        document.querySelectorAll('.progress-fill').forEach(bar => {
           const width = bar.style.width;
           bar.style.width = '0%';
           setTimeout(() => {
