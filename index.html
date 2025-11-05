@@ -1,1609 +1,558 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yaroslav Volokhodko - Enthusiast Developer in Java, Vibecoder, Problem-solver & Management Expert</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    /* ===== COLORS ===== */
-    :root {
-      --bg-primary: #1a1e29;
-      --bg-secondary: #242936;
-      --bg-tertiary: #2e3445;
-      --bg-quaternary: #3a4055;
-      --bg-card: #252b3b;
-      --text-primary: #ffffff;
-      --text-secondary: #e8eaed;
-      --text-muted: #9aa0a6;
-      --text-subtle: #70757a;
-      --accent-primary: #4f8bf9;
-      --accent-secondary: #3b82f6;
-      --accent-tertiary: #1d4ed8;
-      --accent-success: #34d399;
-      --accent-warning: #fbbf24;
-      --accent-error: #f87171;
-      --border-primary: #3c4043;
-      --border-secondary: #5f6368;
-      --shadow-sm: rgba(0, 0, 0, 0.05);
-      --shadow-md: rgba(0, 0, 0, 0.1);
-      --shadow-lg: rgba(0, 0, 0, 0.15);
-      --shadow-xl: rgba(0, 0, 0, 0.25);
-      --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-      --gradient-surface: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);
-    }
-
-    /* ===== BASE STYLES ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* ===== UTILITY CLASSES ===== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Margin utilities */
-    .mb-4 { margin-bottom: 4px; }
-    .mb-8 { margin-bottom: 8px; }
-    .mb-12 { margin-bottom: 12px; }
-    .mb-16 { margin-bottom: 16px; }
-    .mb-20 { margin-bottom: 20px; }
-    .mb-24 { margin-bottom: 24px; }
-    .mb-32 { margin-bottom: 32px; }
-    .mb-40 { margin-bottom: 40px; }
-    .mb-48 { margin-bottom: 48px; }
-
-    /* Transition utilities */
-    .transition-all { transition: all 0.3s ease; }
-    .transition-fast { transition: all 0.2s ease; }
-
-    /* Text utilities */
-    .text-center { text-align: center; }
-    .text-left { text-align: left; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-    /* ===== COMPONENT CLASSES ===== */
-    
-    /* Section layouts */
-    .section {
-      margin-bottom: 100px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-    }
-
-    .section-title--sm {
-      font-size: 1.6rem;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent-primary) 0%, transparent 100%);
-    }
-
-    /* Grid system */
-    .grid {
-      display: grid;
-      gap: 32px;
-    }
-
-    .grid--2 { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
-    .grid--3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .grid--4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-
-    /* Card component */
-    .card {
-      background: var(--gradient-surface);
-      border: 1px solid var(--border-primary);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(79, 139, 249, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-primary);
-      box-shadow: 0 12px 32px var(--shadow-lg);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Button component */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.01em;
-    }
-
-    .btn--sm {
-      padding: 10px 16px;
-      font-size: 0.9rem;
-    }
-
-    .btn--full {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: var(--gradient-primary);
-      color: white;
-      box-shadow: 0 4px 12px rgba(79, 139, 249, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(79, 139, 249, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 1.5px solid var(--accent-primary);
-      color: var(--accent-primary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .btn-ghost {
-      background: var(--bg-tertiary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-primary);
-    }
-
-    .btn-ghost:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--border-secondary);
-    }
-
-    /* Surface item component (replaces info-item, value-item, etc.) */
-    .surface-item {
-      padding: 24px 20px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-primary);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .surface-item:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-    }
-
-    .surface-item--center {
-      text-align: center;
-    }
-
-    .surface-item--compact {
-      padding: 16px 20px;
-    }
-
-    /* Timeline component (for both experience and education) */
-    .timeline-item {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 40px;
-      border-left: 3px solid var(--accent-primary);
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -7px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      background: var(--accent-primary);
-      border-radius: 50%;
-      border: 3px solid var(--bg-primary);
-    }
-
-    .timeline-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .timeline-subtitle {
-      font-size: 1.1rem;
-      color: var(--accent-primary);
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .timeline-period {
-      display: inline-block;
-      background: var(--bg-tertiary);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      border: 1px solid var(--border-primary);
-    }
-
-    .timeline-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-top: 12px;
-    }
-
-    /* Badge component */
-    .badge {
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      box-shadow: 0 4px 15px rgba(79, 139, 249, 0.3);
-    }
-
-    .badge--primary {
-      background: var(--gradient-primary);
-      color: white;
-    }
-
-    /* Skill badge variants */
-    .skill-badge {
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .skill-badge--expert {
-      background: var(--accent-success);
-      color: var(--bg-primary);
-    }
-
-    .skill-badge--advanced {
-      background: var(--accent-primary);
-      color: white;
-    }
-
-    .skill-badge--intermediate {
-      background: var(--accent-warning);
-      color: var(--bg-primary);
-    }
-
-    .skill-badge--basic {
-      background: var(--bg-quaternary);
-      color: var(--text-muted);
-      border: 1px solid var(--border-secondary);
-    }
-
-    /* Progress bar component */
-    .progress-bar {
-      width: 80px;
-      height: 6px;
-      background: var(--bg-quaternary);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--gradient-primary);
-      border-radius: 3px;
-      transition: width 1s ease-out;
-    }
-
-    /* Icon utilities */
-    .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-primary);
-    }
-
-    .icon--sm { width: 20px; font-size: 1rem; }
-    .icon--md { width: 24px; font-size: 1.5rem; }
-    .icon--lg { font-size: 2rem; }
-
-    /* ===== SPECIFIC SECTIONS ===== */
-    
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
-      padding: 100px 0;
-      position: relative;
-      overflow: hidden;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(79, 139, 249, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
-    }
-
-    .header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23434C5E" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.1;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 3;
-      display: grid;
-      grid-template-columns: 180px 1fr 300px;
-      gap: 60px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
-    .profile-image-container {
-      position: relative;
-      margin-bottom: 20px;
-    }
-
-    .profile-image {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid var(--accent-primary);
-      box-shadow: 
-        0 0 0 8px rgba(79, 139, 249, 0.1),
-        0 15px 35px rgba(0, 0, 0, 0.3),
-        0 5px 15px rgba(79, 139, 249, 0.2);
-      transition: all 0.4s ease;
-      object-fit: cover;
-      object-position: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .profile-image:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 
-        0 0 0 12px rgba(79, 139, 249, 0.15),
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 10px 25px rgba(79, 139, 249, 0.3);
-    }
-
-    .profile-image-container::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
-      z-index: 1;
-      opacity: 0.1;
-      transition: all 0.4s ease;
-    }
-
-    .profile-section:hover .profile-image-container::before {
-      opacity: 0.2;
-      transform: scale(1.1);
-    }
-
-    .header-main {
-      text-align: left;
-      padding: 0 20px;
-    }
-
-    .name {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, #ffffff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      position: relative;
-    }
-
-    .name::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 80px;
-      height: 4px;
-      background: var(--gradient-primary);
-      border-radius: 2px;
-    }
-
-    .title {
-      font-size: 1.6rem;
-      color: var(--text-secondary);
-      font-weight: 500;
-      margin-bottom: 20px;
-      letter-spacing: 0.02em;
-      position: relative;
-      padding-left: 20px;
-    }
-
-    .title::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 6px;
-      height: 60%;
-      background: var(--gradient-primary);
-      border-radius: 3px;
-    }
-
-    .summary {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 550px;
-      margin-bottom: 32px;
-      padding: 20px;
-      background: rgba(79, 139, 249, 0.05);
-      border-left: 3px solid var(--accent-primary);
-      border-radius: 0 8px 8px 0;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    /* Contact section */
-    .contact-section {
-      background: rgba(79, 139, 249, 0.05);
-      border: 1px solid rgba(79, 139, 249, 0.1);
-      border-radius: 16px;
-      padding: 32px 24px;
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    .contact-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      border-radius: 16px 16px 0 0;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .contact-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .contact-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-    }
-
-    .contact-item:hover {
-      color: var(--accent-primary);
-      background: rgba(79, 139, 249, 0.1);
-      border-color: rgba(79, 139, 249, 0.2);
-      transform: translateX(4px);
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Main content */
-    .main-content {
-      padding: 100px 0;
-    }
-
-    /* Skills section */
-    .skills-category {
-      margin-bottom: 32px;
-    }
-
-    .skills-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .skills-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .skills-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-primary);
-      border-radius: 12px;
-      transition: all 0.2s ease;
-    }
-
-    .skill-item:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--accent-primary);
-    }
-
-    .skill-name {
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .skill-level {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Education specific */
-    .education-timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-
-    .education-timeline::before {
-      content: '';
-      position: absolute;
-      left: 16px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
-    }
-
-    .education-item {
-      position: relative;
-      margin-bottom: 32px;
-      background: var(--gradient-surface);
-      border: 1px solid var(--border-primary);
-      border-radius: 12px;
-      padding: 24px;
-      transition: all 0.3s ease;
-    }
-
-    .education-item::before {
-      content: '';
-      position: absolute;
-      left: -24px;
-      top: 24px;
-      width: 10px;
-      height: 10px;
-      background: var(--accent-primary);
-      border-radius: 50%;
-      border: 3px solid var(--bg-primary);
-    }
-
-    .education-item:hover {
-      border-color: var(--accent-primary);
-      transform: translateX(4px);
-    }
-
-    /* Values grid */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
-    }
-
-    .value-item {
-      text-align: center;
-      padding: 24px 16px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-primary);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .value-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-primary);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .value-item:hover {
-      background: var(--bg-quaternary);
-      border-color: var(--accent-primary);
-      transform: translateY(-3px);
-    }
-
-    .value-item:hover::before {
-      transform: scaleX(1);
-    }
-
-    .value-icon {
-      font-size: 2rem;
-      color: var(--accent-primary);
-      margin-bottom: 12px;
-    }
-
-    .value-name {
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-primary);
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-primary);
-      border-radius: 50%;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      background: var(--accent-primary);
-      border-color: var(--accent-primary);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .footer-text {
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .footer-tagline {
-      margin-top: 16px;
-      font-size: 0.9rem;
-      color: var(--text-subtle);
-    }
-
-    /* Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    @keyframes fillProgress {
-      from { width: 0%; }
-    }
-
-    /* ===== RESPONSIVE DESIGN ===== */
-    @media (max-width: 1024px) {
-      .header-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-        max-width: 800px;
-      }
-
-      .header-main {
-        text-align: center;
-        padding: 0;
-      }
-
-      .name {
-        font-size: 3.2rem;
-      }
-
-      .title::before {
-        display: none;
-      }
-
-      .contact-section {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .header-actions {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .header { padding: 80px 0; min-height: 70vh; }
-      .name { font-size: 2.8rem; }
-      .title { font-size: 1.3rem; padding-left: 0; }
-      .summary { font-size: 1rem; padding: 16px; }
-      .section-title { font-size: 1.8rem; }
-      .grid--2 { grid-template-columns: 1fr; }
-      .card { padding: 24px; }
-      .main-content { padding: 60px 0; }
-      .section { margin-bottom: 60px; }
-      .header-actions { flex-direction: column; gap: 12px; width: 100%; }
-      .btn { width: 100%; justify-content: center; }
-      .contact-actions { gap: 8px; }
-      .btn--sm { font-size: 0.85rem; padding: 8px 12px; }
-    }
-
-    @media (max-width: 480px) {
-      .name { font-size: 2.2rem; }
-      .title { font-size: 1.1rem; }
-      .profile-image { width: 120px; height: 120px; }
-      .card { padding: 20px; }
-      .timeline-item { padding-left: 20px; }
-      .education-timeline { padding-left: 24px; }
-      .contact-section { padding: 24px 20px; }
-      .header { padding: 60px 0; min-height: 60vh; }
-      .summary { font-size: 0.95rem; padding: 12px; }
-    }
-
-    @media print {
-      .header-actions, .social-links, .btn { display: none; }
-      .card { border: 1px solid #ddd; box-shadow: none; }
-      body { background: white; color: black; }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Yaroslav Volokhodko - Enthusiast Developer in Java, Vibecoder, Problem-solver &amp; Management Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>/* ===== COLORS ===== */  :root {   --bg-primary: #1a1e29;   --bg-secondary: #242936;   --bg-tertiary: #2e3445;   --bg-quaternary: #3a4055;   --bg-card: #252b3b;   --text-primary: #ffffff;   --text-secondary: #e8eaed;   --text-muted: #9aa0a6;   --text-subtle: #70757a;   --accent-primary: #4f8bf9;   --accent-secondary: #3b82f6;   --accent-tertiary: #1d4ed8;   --accent-success: #34d399;   --accent-warning: #fbbf24;   --accent-error: #f87171;   --border-primary: #3c4043;   --border-secondary: #5f6368;   --shadow-sm: rgba(0, 0, 0, 0.05);   --shadow-md: rgba(0, 0, 0, 0.1);   --shadow-lg: rgba(0, 0, 0, 0.15);   --shadow-xl: rgba(0, 0, 0, 0.25);   --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);   --gradient-surface: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-tertiary) 100%);  }  /* ===== BASE STYLES ===== */  * {   margin: 0;   padding: 0;   box-sizing: border-box;  }  body {   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;   background: var(--bg-primary);   color: var(--text-primary);   line-height: 1.6;   font-size: 16px;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;  }  /* ===== UTILITY CLASSES ===== */  .container {   max-width: 1200px;   margin: 0 auto;   padding: 0 24px;  }  /* Margin utilities */  .mb-4 { margin-bottom: 4px; }  .mb-8 { margin-bottom: 8px; }  .mb-12 { margin-bottom: 12px; }  .mb-16 { margin-bottom: 16px; }  .mb-20 { margin-bottom: 20px; }  .mb-24 { margin-bottom: 24px; }  .mb-32 { margin-bottom: 32px; }  .mb-40 { margin-bottom: 40px; }  .mb-48 { margin-bottom: 48px; }  /* Transition utilities */  .transition-all { transition: all 0.3s ease; }  .transition-fast { transition: all 0.2s ease; }  /* Text utilities */  .text-center { text-align: center; }  .text-left { text-align: left; }  .font-mono { font-family: 'JetBrains Mono', monospace; }  /* ===== COMPONENT CLASSES ===== */    /* Section layouts */  .section {   margin-bottom: 100px;  }  .section-header {   display: flex;   align-items: center;   gap: 16px;   margin-bottom: 48px;  }  .section-title {   font-size: 2.25rem;   font-weight: 600;   color: var(--text-primary);   letter-spacing: -0.01em;  }  .section-title--sm {   font-size: 1.6rem;  }  .section-line {   flex: 1;   height: 1px;   background: linear-gradient(90deg, var(--accent-primary) 0%, transparent 100%);  }  /* Grid system */  .grid {   display: grid;   gap: 32px;  }  .grid--2 { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }  .grid--3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }  .grid--4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }  /* Card component */  .card {   background: var(--gradient-surface);   border: 1px solid var(--border-primary);   border-radius: 16px;   padding: 32px;   transition: all 0.3s ease;   position: relative;   overflow: hidden;  }  .card::before {   content: '';   position: absolute;   top: 0;   left: 0;   right: 0;   bottom: 0;   background: linear-gradient(135deg, rgba(79, 139, 249, 0.02) 0%, rgba(59, 130, 246, 0.05) 100%);   opacity: 0;   transition: opacity 0.3s ease;  }  .card:hover {   transform: translateY(-4px);   border-color: var(--accent-primary);   box-shadow: 0 12px 32px var(--shadow-lg);  }  .card:hover::before {   opacity: 1;  }  .card-content {   position: relative;   z-index: 1;  }  /* Button component */  .btn {   display: inline-flex;   align-items: center;   gap: 8px;   padding: 12px 24px;   border-radius: 8px;   font-weight: 500;   font-size: 0.95rem;   text-decoration: none;   transition: all 0.2s ease;   border: none;   cursor: pointer;   letter-spacing: 0.01em;  }  .btn--sm {   padding: 10px 16px;   font-size: 0.9rem;  }  .btn--full {   width: 100%;   justify-content: center;  }  .btn-primary {   background: var(--gradient-primary);   color: white;   box-shadow: 0 4px 12px rgba(79, 139, 249, 0.3);  }  .btn-primary:hover {   transform: translateY(-1px);   box-shadow: 0 6px 16px rgba(79, 139, 249, 0.4);  }  .btn-secondary {   background: transparent;   border: 1.5px solid var(--accent-primary);   color: var(--accent-primary);  }  .btn-secondary:hover {   background: var(--accent-primary);   color: white;  }  .btn-ghost {   background: var(--bg-tertiary);   color: var(--text-secondary);   border: 1px solid var(--border-primary);  }  .btn-ghost:hover {   background: var(--bg-quaternary);   border-color: var(--border-secondary);  }  /* Surface item component (replaces info-item, value-item, etc.) */  .surface-item {   padding: 24px 20px;   background: var(--bg-tertiary);   border: 1px solid var(--border-primary);   border-radius: 12px;   transition: all 0.3s ease;  }  .surface-item:hover {   background: var(--bg-quaternary);   border-color: var(--accent-primary);   transform: translateY(-2px);  }  .surface-item--center {   text-align: center;  }  .surface-item--compact {   padding: 16px 20px;  }  /* Timeline component (for both experience and education) */  .timeline-item {   position: relative;   padding-left: 24px;   margin-bottom: 40px;   border-left: 3px solid var(--accent-primary);  }  .timeline-item::before {   content: '';   position: absolute;   left: -7px;   top: 8px;   width: 12px;   height: 12px;   background: var(--accent-primary);   border-radius: 50%;   border: 3px solid var(--bg-primary);  }  .timeline-title {   font-size: 1.4rem;   font-weight: 600;   color: var(--text-primary);   margin-bottom: 4px;  }  .timeline-subtitle {   font-size: 1.1rem;   color: var(--accent-primary);   font-weight: 500;   margin-bottom: 8px;  }  .timeline-period {   display: inline-block;   background: var(--bg-tertiary);   padding: 4px 12px;   border-radius: 20px;   font-size: 0.85rem;   color: var(--text-muted);   font-family: 'JetBrains Mono', monospace;   border: 1px solid var(--border-primary);  }  .timeline-description {   color: var(--text-secondary);   line-height: 1.7;   margin-top: 12px;  }  /* Badge component */  .badge {   padding: 6px 16px;   border-radius: 20px;   font-size: 0.8rem;   font-weight: 500;   letter-spacing: 0.5px;   text-transform: uppercase;   box-shadow: 0 4px 15px rgba(79, 139, 249, 0.3);  }  .badge--primary {   background: var(--gradient-primary);   color: white;  }  /* Skill badge variants */  .skill-badge {   padding: 4px 8px;   border-radius: 6px;   font-size: 0.75rem;   font-weight: 500;   text-transform: uppercase;   letter-spacing: 0.5px;  }  .skill-badge--expert {   background: var(--accent-success);   color: var(--bg-primary);  }  .skill-badge--advanced {   background: var(--accent-primary);   color: white;  }  .skill-badge--intermediate {   background: var(--accent-warning);   color: var(--bg-primary);  }  .skill-badge--basic {   background: var(--bg-quaternary);   color: var(--text-muted);   border: 1px solid var(--border-secondary);  }  /* Progress bar component */  .progress-bar {   width: 80px;   height: 6px;   background: var(--bg-quaternary);   border-radius: 3px;   overflow: hidden;  }  .progress-fill {   height: 100%;   background: var(--gradient-primary);   border-radius: 3px;   transition: width 1s ease-out;  }  /* Icon utilities */  .icon {   display: inline-flex;   align-items: center;   justify-content: center;   color: var(--accent-primary);  }  .icon--sm { width: 20px; font-size: 1rem; }  .icon--md { width: 24px; font-size: 1.5rem; }  .icon--lg { font-size: 2rem; }  /* ===== SPECIFIC SECTIONS ===== */    /* Header */  .header {   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);   padding: 100px 0;   position: relative;   overflow: hidden;   min-height: 80vh;   display: flex;   align-items: center;  }  .header::before {   content: '';   position: absolute;   top: 0;   left: 0;   right: 0;   bottom: 0;   background:     radial-gradient(circle at 20% 30%, rgba(79, 139, 249, 0.1) 0%, transparent 50%),    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);  }  .header::after {   content: '';   position: absolute;   top: 0;   left: 0;   right: 0;   bottom: 0;   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23434C5E" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');   opacity: 0.1;  }  .header-content {   position: relative;   z-index: 3;   display: grid;   grid-template-columns: 180px 1fr 300px;   gap: 60px;   align-items: center;   max-width: 1200px;   margin: 0 auto;  }  .profile-section {   display: flex;   flex-direction: column;   align-items: center;   position: relative;  }  .profile-image-container {   position: relative;   margin-bottom: 20px;  }  .profile-image {   width: 160px;   height: 160px;   border-radius: 50%;   border: 4px solid var(--accent-primary);   box-shadow:     0 0 0 8px rgba(79, 139, 249, 0.1),    0 15px 35px rgba(0, 0, 0, 0.3),    0 5px 15px rgba(79, 139, 249, 0.2);   transition: all 0.4s ease;   object-fit: cover;   object-position: center;   position: relative;   z-index: 2;  }  .profile-image:hover {   transform: translateY(-8px) scale(1.02);   box-shadow:     0 0 0 12px rgba(79, 139, 249, 0.15),    0 25px 50px rgba(0, 0, 0, 0.4),    0 10px 25px rgba(79, 139, 249, 0.3);  }  .profile-image-container::before {   content: '';   position: absolute;   top: -10px;   left: -10px;   right: -10px;   bottom: -10px;   border-radius: 50%;   background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));   z-index: 1;   opacity: 0.1;   transition: all 0.4s ease;  }  .profile-section:hover .profile-image-container::before {   opacity: 0.2;   transform: scale(1.1);  }  .header-main {   text-align: left;   padding: 0 20px;  }  .name {   font-size: 4rem;   font-weight: 700;   margin-bottom: 12px;   background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, #ffffff 100%);   -webkit-background-clip: text;   -webkit-text-fill-color: transparent;   background-clip: text;   letter-spacing: -0.03em;   line-height: 1.1;   position: relative;  }  .name::after {   content: '';   position: absolute;   bottom: -8px;   left: 0;   width: 80px;   height: 4px;   background: var(--gradient-primary);   border-radius: 2px;  }  .title {   font-size: 1.6rem;   color: var(--text-secondary);   font-weight: 500;   margin-bottom: 20px;   letter-spacing: 0.02em;   position: relative;   padding-left: 20px;  }  .title::before {   content: '';   position: absolute;   left: 0;   top: 50%;   transform: translateY(-50%);   width: 6px;   height: 60%;   background: var(--gradient-primary);   border-radius: 3px;  }  .summary {   font-size: 1.15rem;   color: var(--text-muted);   line-height: 1.8;   max-width: 550px;   margin-bottom: 32px;   padding: 20px;   background: rgba(79, 139, 249, 0.05);   border-left: 3px solid var(--accent-primary);   border-radius: 0 8px 8px 0;  }  .header-actions {   display: flex;   gap: 20px;   align-items: center;   flex-wrap: wrap;  }  /* Contact section */  .contact-section {   background: rgba(79, 139, 249, 0.05);   border: 1px solid rgba(79, 139, 249, 0.1);   border-radius: 16px;   padding: 32px 24px;   backdrop-filter: blur(10px);   position: relative;  }  .contact-section::before {   content: '';   position: absolute;   top: 0;   left: 0;   right: 0;   height: 4px;   background: var(--gradient-primary);   border-radius: 16px 16px 0 0;  }  .contact-header {   text-align: center;   margin-bottom: 24px;  }  .contact-title {   font-size: 1.1rem;   font-weight: 600;   color: var(--text-primary);   margin-bottom: 8px;  }  .contact-subtitle {   font-size: 0.9rem;   color: var(--text-muted);  }  .contact-info {   display: flex;   flex-direction: column;   gap: 16px;   margin-bottom: 24px;  }  .contact-item {   display: flex;   align-items: center;   gap: 12px;   color: var(--text-secondary);   text-decoration: none;   transition: all 0.3s ease;   font-size: 0.95rem;   padding: 8px 12px;   border-radius: 8px;   border: 1px solid transparent;  }  .contact-item:hover {   color: var(--accent-primary);   background: rgba(79, 139, 249, 0.1);   border-color: rgba(79, 139, 249, 0.2);   transform: translateX(4px);  }  .contact-actions {   display: flex;   flex-direction: column;   gap: 12px;  }  /* Main content */  .main-content {   padding: 100px 0;  }  /* Skills section */  .skills-category {   margin-bottom: 32px;  }  .skills-header {   display: flex;   align-items: center;   gap: 12px;   margin-bottom: 20px;  }  .skills-title {   font-size: 1.3rem;   font-weight: 600;   color: var(--text-primary);  }  .skills-grid {   display: grid;   gap: 16px;  }  .skill-item {   display: flex;   align-items: center;   justify-content: space-between;   padding: 16px 20px;   background: var(--bg-tertiary);   border: 1px solid var(--border-primary);   border-radius: 12px;   transition: all 0.2s ease;  }  .skill-item:hover {   background: var(--bg-quaternary);   border-color: var(--accent-primary);  }  .skill-name {   font-weight: 500;   color: var(--text-secondary);  }  .skill-level {   display: flex;   align-items: center;   gap: 8px;  }  /* Education specific */  .education-timeline {   position: relative;   padding-left: 32px;  }  .education-timeline::before {   content: '';   position: absolute;   left: 16px;   top: 0;   bottom: 0;   width: 2px;   background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));  }  .education-item {   position: relative;   margin-bottom: 32px;   background: var(--gradient-surface);   border: 1px solid var(--border-primary);   border-radius: 12px;   padding: 24px;   transition: all 0.3s ease;  }  .education-item::before {   content: '';   position: absolute;   left: -24px;   top: 24px;   width: 10px;   height: 10px;   background: var(--accent-primary);   border-radius: 50%;   border: 3px solid var(--bg-primary);  }  .education-item:hover {   border-color: var(--accent-primary);   transform: translateX(4px);  }  /* Values grid */  .values-grid {   display: grid;   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));   gap: 24px;  }  .value-item {   text-align: center;   padding: 24px 16px;   background: var(--bg-tertiary);   border: 1px solid var(--border-primary);   border-radius: 12px;   transition: all 0.3s ease;   position: relative;   overflow: hidden;  }  .value-item::before {   content: '';   position: absolute;   top: 0;   left: 0;   right: 0;   height: 3px;   background: var(--gradient-primary);   transform: scaleX(0);   transition: transform 0.3s ease;  }  .value-item:hover {   background: var(--bg-quaternary);   border-color: var(--accent-primary);   transform: translateY(-3px);  }  .value-item:hover::before {   transform: scaleX(1);  }  .value-icon {   font-size: 2rem;   color: var(--accent-primary);   margin-bottom: 12px;  }  .value-name {   font-weight: 500;   color: var(--text-secondary);  }  /* Footer */  .footer {   background: var(--bg-secondary);   border-top: 1px solid var(--border-primary);   padding: 60px 0;   text-align: center;  }  .footer-content {   max-width: 600px;   margin: 0 auto;  }  .social-links {   display: flex;   justify-content: center;   gap: 20px;   margin-bottom: 32px;  }  .social-link {   display: flex;   align-items: center;   justify-content: center;   width: 48px;   height: 48px;   background: var(--bg-tertiary);   border: 1px solid var(--border-primary);   border-radius: 50%;   color: var(--text-secondary);   text-decoration: none;   transition: all 0.3s ease;  }  .social-link:hover {   background: var(--accent-primary);   border-color: var(--accent-primary);   color: white;   transform: translateY(-2px);  }  .footer-text {   color: var(--text-muted);   line-height: 1.6;  }  .footer-tagline {   margin-top: 16px;   font-size: 0.9rem;   color: var(--text-subtle);  }  /* Animation */  @keyframes fadeInUp {   from {    opacity: 0;    transform: translateY(30px);   }   to {    opacity: 1;    transform: translateY(0);   }  }  .fade-in {   animation: fadeInUp 0.6s ease-out;  }  @keyframes fillProgress {   from { width: 0%; }  }  /* ===== RESPONSIVE DESIGN ===== */  @media (max-width: 1024px) {   .header-content {    grid-template-columns: 1fr;    text-align: center;    gap: 40px;    max-width: 800px;   }   .header-main {    text-align: center;    padding: 0;   }   .name {    font-size: 3.2rem;   }   .title::before {    display: none;   }   .contact-section {    max-width: 400px;    margin: 0 auto;   }   .header-actions {    justify-content: center;   }  }  @media (max-width: 768px) {   .container { padding: 0 20px; }   .header { padding: 80px 0; min-height: 70vh; }   .name { font-size: 2.8rem; }   .title { font-size: 1.3rem; padding-left: 0; }   .summary { font-size: 1rem; padding: 16px; }   .section-title { font-size: 1.8rem; }   .grid--2 { grid-template-columns: 1fr; }   .card { padding: 24px; }   .main-content { padding: 60px 0; }   .section { margin-bottom: 60px; }   .header-actions { flex-direction: column; gap: 12px; width: 100%; }   .btn { width: 100%; justify-content: center; }   .contact-actions { gap: 8px; }   .btn--sm { font-size: 0.85rem; padding: 8px 12px; }  }  @media (max-width: 480px) {   .name { font-size: 2.2rem; }   .title { font-size: 1.1rem; }   .profile-image { width: 120px; height: 120px; }   .card { padding: 20px; }   .timeline-item { padding-left: 20px; }   .education-timeline { padding-left: 24px; }   .contact-section { padding: 24px 20px; }   .header { padding: 60px 0; min-height: 60vh; }   .summary { font-size: 0.95rem; padding: 12px; }  }  @media print {   .header-actions, .social-links, .btn { display: none; }   .card { border: 1px solid #ddd; box-shadow: none; }   body { background: white; color: black; }  }</style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        
-        <div class="profile-section">
-          <div class="profile-image-container">
-            <img src="./avatar.png" alt="Yaroslav Volokhodko" class="profile-image">
-          </div>
-          <span class="badge badge--primary">Open to Work</span>
-        </div>
-        
-        <div class="header-main">
-          <h1 class="name">Yaroslav Volokhodko</h1>
-          <h2 class="title">Java Developer & Business Management Expert</h2>
-          <p class="summary">
+<!-- Header -->
+<header class="header">
+<div class="container">
+<div class="header-content">
+<div class="profile-section">
+<div class="profile-image-container">
+<img alt="Yaroslav Volokhodko" class="profile-image" src="./avatar.png"/>
+</div>
+<span class="badge badge--primary">Open to Work</span>
+</div>
+<div class="header-main">
+<h1 class="name">Yaroslav Volokhodko</h1>
+<h2 class="title">Java Developer &amp; Business Management Expert</h2>
+<p class="summary">
             Passionate Java developer with strong business management background. 
             Combining technical enthusiasm with proven expertise in operations management, 
             process optimization, and customer relations to bridge business and technology.
           </p>
-          <div class="header-actions">
-            <a href="mailto:volyar@proton.me" class="btn btn-primary">
-              <i class="fas fa-envelope"></i>
-              Get In Touch
-            </a>
-            <a href="#experience" class="btn btn-secondary">
-              <i class="fas fa-briefcase"></i>
+<div class="header-actions">
+
+<a class="btn btn-secondary" href="#experience">
+<i class="fas fa-briefcase"></i>
               View Portfolio
             </a>
-            <a href="https://github.com/Yaro-bit" class="btn btn-ghost" target="_blank">
-              <i class="fab fa-github"></i>
+<a class="btn btn-ghost" href="https://github.com/Yaro-bit" target="_blank">
+<i class="fab fa-github"></i>
               GitHub
             </a>
-          </div>
-        </div>
-        
-        <div class="contact-section">
-          <div class="contact-header">
-            <div class="contact-title">Let's Connect</div>
-            <div class="contact-subtitle">Always open for opportunities</div>
-          </div>
-          
-          <div class="contact-info">
-            <a href="mailto:volyar@proton.me" class="contact-item">
-              <i class="fas fa-envelope icon icon--sm"></i>
-              <span>volyar@proton.me</span>
-            </a>
-            <a href="tel:+4367040699947" class="contact-item">
-              <i class="fas fa-phone icon icon--sm"></i>
-              <span>+43 670 4069947</span>
-            </a>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt icon icon--sm"></i>
-              <span>Linz, Austria</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-flag icon icon--sm"></i>
-              <span>Ukrainian Citizen</span>
-            </div>
-          </div>
-          
-          <div class="contact-actions">
-            <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" class="btn btn--sm btn-primary btn--full" target="_blank">
-              <i class="fab fa-linkedin"></i>
+</div>
+</div>
+<div class="contact-section">
+<div class="contact-header">
+<div class="contact-title">Let's Connect</div>
+<div class="contact-subtitle">Always open for opportunities</div>
+</div>
+<div class="contact-info">
+
+
+<div class="contact-item">
+<i class="fas fa-map-marker-alt icon icon--sm"></i>
+<span>Linz, Austria</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-flag icon icon--sm"></i>
+
+</div>
+</div>
+<div class="contact-actions">
+<a class="btn btn--sm btn-primary btn--full" href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" target="_blank">
+<i class="fab fa-linkedin"></i>
               LinkedIn Profile
             </a>
-            <a href="#skills" class="btn btn--sm btn-secondary btn--full">
-              <i class="fas fa-code"></i>
+<a class="btn btn--sm btn-secondary btn--full" href="#skills">
+<i class="fas fa-code"></i>
               View Skills
             </a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      
-      <!-- Professional Experience -->
-      <section class="section fade-in" id="experience">
-        <div class="section-header">
-          <h2 class="section-title">Professional Experience</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="card">
-          <div class="card-content">
-            
-            <div class="timeline-item">
-              <div class="timeline-title">Technical Support Specialist & Customer Consultant</div>
-              <div class="timeline-subtitle">NTS Retail</div>
-              <span class="timeline-period">Feb 2023 – Present</span>
-              <div class="timeline-description">
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="main-content">
+<div class="container">
+<!-- Professional Experience -->
+<section class="section fade-in" id="experience">
+<div class="section-header">
+<h2 class="section-title">Professional Experience</h2>
+<div class="section-line"></div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="timeline-item">
+<div class="timeline-title">Technical Support Specialist &amp; Customer Consultant</div>
+<div class="timeline-subtitle">NTS Retail</div>
+<span class="timeline-period">Feb 2023 – Present</span>
+<div class="timeline-description">
                 Provide comprehensive technical support for enterprise telecom POS systems through Jira, email, phone, and web conferences. Collaborate with development and project teams to troubleshoot complex technical issues. Utilize SQL, Postman, Wildfly, Keycloak, OpenShift, Helm, and RabbitMQ for system analysis and problem resolution while developing Java programming skills.
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Sales Representative & Export Operations Manager</div>
-              <div class="timeline-subtitle">Polytec EMC Engineering GmbH</div>
-              <span class="timeline-period">Nov 2019 – Nov 2022</span>
-              <div class="timeline-description">
+</div>
+<div class="timeline-item">
+<div class="timeline-title">Sales Representative &amp; Export Operations Manager</div>
+<div class="timeline-subtitle">Polytec EMC Engineering GmbH</div>
+<span class="timeline-period">Nov 2019 – Nov 2022</span>
+<div class="timeline-description">
                 Managed comprehensive customer relationships in German and English markets, overseeing complete order lifecycle from processing to delivery. Handled complex export documentation, ERP system maintenance, and international compliance requirements. Led project coordination, travel logistics, and trade fair organization while maintaining strict adherence to customs regulations and sanctions protocols.
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Volunteer Technical Translator</div>
-              <div class="timeline-subtitle">Austrian Red Cross</div>
-              <span class="timeline-period">Mar 2022 – Nov 2022</span>
-              <div class="timeline-description">
+</div>
+<div class="timeline-item">
+<div class="timeline-title">Volunteer Technical Translator</div>
+<div class="timeline-subtitle">Austrian Red Cross</div>
+<span class="timeline-period">Mar 2022 – Nov 2022</span>
+<div class="timeline-description">
                 Provided critical translation services for Ukrainian and Russian speakers during humanitarian crisis response. Coordinated with law enforcement and humanitarian organizations to facilitate effective communication. Organized community support networks and managed digital communication channels for refugee assistance programs.
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Customs Operations Specialist & Digital Coordinator</div>
-              <div class="timeline-subtitle">GARTNER KG</div>
-              <span class="timeline-period">Aug 2017 – Nov 2019</span>
-              <div class="timeline-description">
+</div>
+<div class="timeline-item">
+<div class="timeline-title">Customs Operations Specialist &amp; Digital Coordinator</div>
+<div class="timeline-subtitle">GARTNER KG</div>
+<span class="timeline-period">Aug 2017 – Nov 2019</span>
+<div class="timeline-description">
                 Managed end-to-end customs and international trade operations, ensuring full compliance with Austrian and EU regulations. Led digital transformation initiatives to optimize logistics, financial, and business processes. Specialized in indirect tax reporting, customs audit preparation, and AEO certification support.
               </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- Technical Expertise -->
-      <section class="section fade-in" id="skills">
-        <div class="section-header">
-          <h2 class="section-title">Technical Expertise</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="grid grid--2">
-          
-          <div class="card">
-            <div class="card-content">
-              <div class="skills-category">
-                <div class="skills-header">
-                  <i class="fas fa-code icon icon--md"></i>
-                  <h3 class="skills-title">Programming & Development</h3>
-                </div>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <span class="skill-name">Java (Core, OOP Fundamentals)</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--intermediate">Learning</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Spring Boot & Frameworks</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--intermediate">Developing</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">SQL & Database Basics</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 70%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Testing & Debugging</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--basic">Basic</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="skills-category">
-                <div class="skills-header">
-                  <i class="fas fa-server icon icon--md"></i>
-                  <h3 class="skills-title">DevOps & Tools (Learning)</h3>
-                </div>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <span class="skill-name">OpenShift & Kubernetes</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--basic">Basic</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 35%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Wildfly & Application Servers</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 55%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Message Queuing (RabbitMQ)</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--basic">Basic</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 30%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Security (Keycloak)</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--basic">Basic</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 35%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="skills-category">
-                <div class="skills-header">
-                  <i class="fas fa-tools icon icon--md"></i>
-                  <h3 class="skills-title">Professional Tools & Systems</h3>
-                </div>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <span class="skill-name">Jira & Project Management</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--expert">Expert</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 95%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Postman & API Testing</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--advanced">Advanced</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">SAP & ERP Systems</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--expert">Expert</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Git & Version Control</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--intermediate">Intermediate</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="skills-category">
-                <div class="skills-header">
-                  <i class="fas fa-chart-line icon icon--md"></i>
-                  <h3 class="skills-title">Business & Leadership</h3>
-                </div>
-                <div class="skills-grid">
-                  <div class="skill-item">
-                    <span class="skill-name">Process Optimization</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--expert">Expert</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 95%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Technical Leadership</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--advanced">Advanced</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Customer Relations</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--expert">Expert</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 90%"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="skill-item">
-                    <span class="skill-name">Quality Management</span>
-                    <div class="skill-level">
-                      <span class="skill-badge skill-badge--advanced">Advanced</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Education & Training -->
-      <section class="section fade-in">
-        <div class="section-header">
-          <h2 class="section-title">Education & Professional Development</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="card">
-          <div class="card-content">
-            <div class="education-timeline">
-              
-              <div class="education-item">
-                <div class="timeline-title">Advanced Java Development Mentoring</div>
-                <div class="timeline-subtitle">Private Technical Mentoring Program</div>
-                <div class="timeline-period">Januar 2025 – August 2025</div>
-                <div class="timeline-description">
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Expertise -->
+<section class="section fade-in" id="skills">
+<div class="section-header">
+<h2 class="section-title">Technical Expertise</h2>
+<div class="section-line"></div>
+</div>
+<div class="grid grid--2">
+<div class="card">
+<div class="card-content">
+<div class="skills-category">
+<div class="skills-header">
+<i class="fas fa-code icon icon--md"></i>
+<h3 class="skills-title">Programming &amp; Development</h3>
+</div>
+<div class="skills-grid">
+<div class="skill-item">
+<span class="skill-name">Java (Core, OOP Fundamentals)</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--intermediate">Learning</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Spring Boot &amp; Frameworks</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--intermediate">Developing</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">SQL &amp; Database Basics</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--intermediate">Intermediate</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Testing &amp; Debugging</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--basic">Basic</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="skills-category">
+<div class="skills-header">
+<i class="fas fa-server icon icon--md"></i>
+<h3 class="skills-title">DevOps &amp; Tools (Learning)</h3>
+</div>
+<div class="skills-grid">
+<div class="skill-item">
+<span class="skill-name">OpenShift &amp; Kubernetes</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--basic">Basic</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Wildfly &amp; Application Servers</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--intermediate">Intermediate</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 55%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Message Queuing (RabbitMQ)</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--basic">Basic</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 30%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Security (Keycloak)</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--basic">Basic</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 35%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="skills-category">
+<div class="skills-header">
+<i class="fas fa-tools icon icon--md"></i>
+<h3 class="skills-title">Professional Tools &amp; Systems</h3>
+</div>
+<div class="skills-grid">
+<div class="skill-item">
+<span class="skill-name">Jira &amp; Project Management</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--expert">Expert</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 95%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Postman &amp; API Testing</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--advanced">Advanced</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 80%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">SAP &amp; ERP Systems</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--expert">Expert</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 90%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Git &amp; Version Control</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--intermediate">Intermediate</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 60%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="skills-category">
+<div class="skills-header">
+<i class="fas fa-chart-line icon icon--md"></i>
+<h3 class="skills-title">Business &amp; Leadership</h3>
+</div>
+<div class="skills-grid">
+<div class="skill-item">
+<span class="skill-name">Process Optimization</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--expert">Expert</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 95%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Technical Leadership</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--advanced">Advanced</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Customer Relations</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--expert">Expert</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 90%"></div>
+</div>
+</div>
+</div>
+<div class="skill-item">
+<span class="skill-name">Quality Management</span>
+<div class="skill-level">
+<span class="skill-badge skill-badge--advanced">Advanced</span>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Education & Training -->
+<section class="section fade-in">
+<div class="section-header">
+<h2 class="section-title">Education &amp; Professional Development</h2>
+<div class="section-line"></div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="education-timeline">
+<div class="education-item">
+<div class="timeline-title">Advanced Java Development Mentoring</div>
+<div class="timeline-subtitle">Private Technical Mentoring Program</div>
+<div class="timeline-period">Januar 2025 – August 2025</div>
+<div class="timeline-description">
                   Intensive one-on-one mentoring program focusing on Java fundamentals, object-oriented programming principles, 
                   testing methodologies, software design patterns, and hands-on project development to build professional development skills.
                 </div>
-              </div>
-
-              <div class="education-item">
-                <div class="timeline-title">Java Software Developer Certification Program</div>
-                <div class="timeline-subtitle">WIFI Professional Education Center</div>
-                <div class="timeline-period">September 2024 – Jul 2025</div>
-                <div class="timeline-description">
+</div>
+<div class="education-item">
+<div class="timeline-title">Java Software Developer Certification Program</div>
+<div class="timeline-subtitle">WIFI Professional Education Center</div>
+<div class="timeline-period">September 2024 – Jul 2025</div>
+<div class="timeline-description">
                   Comprehensive Java development program covering Spring Boot framework, database integration fundamentals, 
                   RESTful API development, and practical project implementation to transition into software development.
                 </div>
-              </div>
-
-              <div class="education-item">
-                <div class="timeline-title">Business Informatics Studies (interrupted)</div>
-                <div class="timeline-subtitle">Hamburger Fern-Hochschule - Johannes Kepler University</div>
-                <div class="timeline-period">Sept 2022 – Aug 2024</div>
-                <div class="timeline-description">
+</div>
+<div class="education-item">
+<div class="timeline-title">Business Informatics Studies (interrupted)</div>
+<div class="timeline-subtitle">Hamburger Fern-Hochschule - Johannes Kepler University</div>
+<div class="timeline-period">Sept 2022 – Aug 2024</div>
+<div class="timeline-description">
                   Advanced distance learning program focusing on business information systems, 
                   digital transformation strategies, and enterprise software architecture.
                 </div>
-              </div>
-
-              <div class="education-item">
-                <div class="timeline-title">University Entrance Qualification</div>
-                <div class="timeline-subtitle">WIFI Professional Education Center</div>
-                <div class="timeline-period">Jan 2020 – Oct 2021</div>
-                <div class="timeline-description">
+</div>
+<div class="education-item">
+<div class="timeline-title">University Entrance Qualification</div>
+<div class="timeline-subtitle">WIFI Professional Education Center</div>
+<div class="timeline-period">Jan 2020 – Oct 2021</div>
+<div class="timeline-description">
                   Comprehensive academic preparation program covering German language proficiency, 
                   advanced mathematics, and English language certification for higher education access.
                 </div>
-              </div>
-
-              <div class="education-item">
-                <div class="timeline-title">Master Certificate in Logistics Management</div>
-                <div class="timeline-subtitle">WIFI Professional Education Center</div>
-                <div class="timeline-period">Sept 2017 – Mar 2019</div>
-                <div class="timeline-description">
+</div>
+<div class="education-item">
+<div class="timeline-title">Master Certificate in Logistics Management</div>
+<div class="timeline-subtitle">WIFI Professional Education Center</div>
+<div class="timeline-period">Sept 2017 – Mar 2019</div>
+<div class="timeline-description">
                   Advanced management program specializing in supply chain optimization, warehouse management systems, 
                   international logistics operations, and strategic process improvement methodologies.
                 </div>
-              </div>
-
-              <div class="education-item">
-                <div class="timeline-title">Certified Logistics Specialist</div>
-                <div class="timeline-subtitle">REXEL Austria GmbH</div>
-                <div class="timeline-period">Jul 2011 – Sep 2014</div>
-                <div class="timeline-description">
+</div>
+<div class="education-item">
+<div class="timeline-title">Certified Logistics Specialist</div>
+<div class="timeline-subtitle">REXEL Austria GmbH</div>
+<div class="timeline-period">Jul 2011 – Sep 2014</div>
+<div class="timeline-description">
                   Professional apprenticeship program in logistics operations, warehouse management, 
                   inventory control systems, and international trade documentation procedures.
                 </div>
-              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Languages & Certifications -->
+<section class="section fade-in">
+<div class="grid grid--2">
+<div class="card">
+<div class="card-content">
+<div class="section-header">
+<h3 class="section-title section-title--sm">Language Proficiency</h3>
+<div class="section-line"></div>
+</div>
+<div class="grid grid--4">
+<div class="surface-item surface-item--center">
+<div class="info-title">German</div>
+<div class="info-subtitle">Native Proficiency</div>
+</div>
+<div class="surface-item surface-item--center">
+<div class="info-title">Ukrainian</div>
+<div class="info-subtitle">Native Proficiency</div>
+</div>
+<div class="surface-item surface-item--center">
+<div class="info-title">English</div>
+<div class="info-subtitle">Professional Working</div>
+</div>
+<div class="surface-item surface-item--center">
+<div class="info-title">Russian</div>
+<div class="info-subtitle">Professional Working</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="section-header">
+<h3 class="section-title section-title--sm">Professional Certifications</h3>
+<div class="section-line"></div>
+</div>
+<div style="display: grid; gap: 16px;">
+<div class="surface-item">
+<div class="info-title">Certified Professional Instructor</div>
+<div class="info-subtitle">Trade, Logistics &amp; Transport Operations • WIFI Wels (2019)</div>
+</div>
+<div class="surface-item">
+<div class="info-title">Certified Customs Specialist P36</div>
+<div class="info-subtitle">International Trade &amp; Customs Procedures • Austria Customs Academy (2018)</div>
+</div>
+<div class="surface-item">
+<div class="info-title">Licensed Crane Operator</div>
+<div class="info-subtitle">Heavy Equipment Operations • Steel Foundation (2016)</div>
+</div>
+<div class="surface-item">
+<div class="info-title">Certified Forklift Operator</div>
+<div class="info-subtitle">Material Handling Equipment • TBF (2013)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Professional Values & Interests -->
+<section class="section fade-in">
+<div class="section-header">
+<h2 class="section-title">Professional Values &amp; Personal Interests</h2>
+<div class="section-line"></div>
+</div>
+<div class="grid grid--3">
+<div class="card">
+<div class="card-content">
+<div class="section-header">
+<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-compass"></i> Core Values</h3>
+</div>
+<div class="values-grid">
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-handshake"></i></div>
+<div class="value-name">Integrity</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
+<div class="value-name">Continuous Learning</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+<div class="value-name">Accountability</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-balance-scale"></i></div>
+<div class="value-name">Collaborative Mindset</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="section-header">
+<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-rocket"></i> Professional Approach</h3>
+</div>
+<div class="values-grid">
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-chart-line"></i></div>
+<div class="value-name">Process Excellence</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-users"></i></div>
+<div class="value-name">Team Leadership</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+<div class="value-name">Innovation Drive</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-puzzle-piece"></i></div>
+<div class="value-name">Solution-Oriented</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-content">
+<div class="section-header">
+<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-heart"></i> Personal Interests</h3>
+</div>
+<div class="values-grid">
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-skating"></i></div>
+<div class="value-name">Skateboarding</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-microchip"></i></div>
+<div class="value-name">Technology Trends</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-robot"></i></div>
+<div class="value-name">Tech Culture</div>
+</div>
+<div class="value-item">
+<div class="value-icon"><i class="fas fa-code"></i></div>
+<div class="value-name">Open Source</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer-content">
+<div class="social-links">
+<a class="social-link" href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" target="_blank" title="LinkedIn Profile">
+<i class="fab fa-linkedin"></i>
+</a>
+<a class="social-link" href="https://github.com/Yaro-bit" target="_blank" title="GitHub Portfolio">
+<i class="fab fa-github"></i>
+</a>
 
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Languages & Certifications -->
-      <section class="section fade-in">
-        <div class="grid grid--2">
-          
-          <div class="card">
-            <div class="card-content">
-              <div class="section-header">
-                <h3 class="section-title section-title--sm">Language Proficiency</h3>
-                <div class="section-line"></div>
-              </div>
-              <div class="grid grid--4">
-                <div class="surface-item surface-item--center">
-                  <div class="info-title">German</div>
-                  <div class="info-subtitle">Native Proficiency</div>
-                </div>
-                <div class="surface-item surface-item--center">
-                  <div class="info-title">Ukrainian</div>
-                  <div class="info-subtitle">Native Proficiency</div>
-                </div>
-                <div class="surface-item surface-item--center">
-                  <div class="info-title">English</div>
-                  <div class="info-subtitle">Professional Working</div>
-                </div>
-                <div class="surface-item surface-item--center">
-                  <div class="info-title">Russian</div>
-                  <div class="info-subtitle">Professional Working</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="section-header">
-                <h3 class="section-title section-title--sm">Professional Certifications</h3>
-                <div class="section-line"></div>
-              </div>
-              <div style="display: grid; gap: 16px;">
-                <div class="surface-item">
-                  <div class="info-title">Certified Professional Instructor</div>
-                  <div class="info-subtitle">Trade, Logistics & Transport Operations • WIFI Wels (2019)</div>
-                </div>
-                <div class="surface-item">
-                  <div class="info-title">Certified Customs Specialist P36</div>
-                  <div class="info-subtitle">International Trade & Customs Procedures • Austria Customs Academy (2018)</div>
-                </div>
-                <div class="surface-item">
-                  <div class="info-title">Licensed Crane Operator</div>
-                  <div class="info-subtitle">Heavy Equipment Operations • Steel Foundation (2016)</div>
-                </div>
-                <div class="surface-item">
-                  <div class="info-title">Certified Forklift Operator</div>
-                  <div class="info-subtitle">Material Handling Equipment • TBF (2013)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Professional Values & Interests -->
-      <section class="section fade-in">
-        <div class="section-header">
-          <h2 class="section-title">Professional Values & Personal Interests</h2>
-          <div class="section-line"></div>
-        </div>
-        
-        <div class="grid grid--3">
-          
-          <div class="card">
-            <div class="card-content">
-              <div class="section-header">
-                <h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-compass"></i> Core Values</h3>
-              </div>
-              <div class="values-grid">
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-handshake"></i></div>
-                  <div class="value-name">Integrity</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
-                  <div class="value-name">Continuous Learning</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
-                  <div class="value-name">Accountability</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-balance-scale"></i></div>
-                  <div class="value-name">Collaborative Mindset</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="section-header">
-                <h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-rocket"></i> Professional Approach</h3>
-              </div>
-              <div class="values-grid">
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-chart-line"></i></div>
-                  <div class="value-name">Process Excellence</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-users"></i></div>
-                  <div class="value-name">Team Leadership</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-                  <div class="value-name">Innovation Drive</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-puzzle-piece"></i></div>
-                  <div class="value-name">Solution-Oriented</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="section-header">
-                <h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-heart"></i> Personal Interests</h3>
-              </div>
-              <div class="values-grid">
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-skating"></i></div>
-                  <div class="value-name">Skateboarding</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-microchip"></i></div>
-                  <div class="value-name">Technology Trends</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-robot"></i></div>
-                  <div class="value-name">Tech Culture</div>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon"><i class="fas fa-code"></i></div>
-                  <div class="value-name">Open Source</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" class="social-link" target="_blank" title="LinkedIn Profile">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/Yaro-bit" class="social-link" target="_blank" title="GitHub Portfolio">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="mailto:volyar@proton.me" class="social-link" title="Email Contact">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://puginarug.com/" class="social-link" target="_blank" title="Personal Project">
-            <i class="fas fa-paw"></i>
-          </a>
-        </div>
-        <p class="footer-text">
-          &copy; 2025 Yaroslav Volokhodko. All rights reserved.
+<a class="social-link" href="https://puginarug.com/" target="_blank" title="Personal Project">
+<i class="fas fa-paw"></i>
+</a>
+</div>
+<p class="footer-text">
+          © 2025 Yaroslav Volokhodko. All rights reserved.
         </p>
-        <p class="footer-tagline">
+<p class="footer-tagline">
           Java Developer • Management Expert • Process Optimization Specialist
         </p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Enhanced animations and interactions
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // Intersection Observer for fade-in animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            
-            // Animate skill progress bars
-            const progressBars = entry.target.querySelectorAll('.progress-fill');
-            progressBars.forEach(bar => {
-              setTimeout(() => {
-                bar.style.transition = 'width 1.5s ease-out';
-              }, 200);
-            });
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections
-      document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.8s ease-out';
-        observer.observe(section);
-      });
-
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Enhanced card hover effects
-      document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-8px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(-4px)';
-        });
-      });
-
-      // Skill item interactions
-      document.querySelectorAll('.skill-item').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-          const progressBar = this.querySelector('.progress-fill');
-          if (progressBar) {
-            progressBar.style.boxShadow = '0 0 10px rgba(79, 139, 249, 0.5)';
-          }
-        });
-        
-        item.addEventListener('mouseleave', function() {
-          const progressBar = this.querySelector('.progress-fill');
-          if (progressBar) {
-            progressBar.style.boxShadow = 'none';
-          }
-        });
-      });
-
-      // Add loading animation to progress bars
-      setTimeout(() => {
-        document.querySelectorAll('.progress-fill').forEach(bar => {
-          const width = bar.style.width;
-          bar.style.width = '0%';
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 100);
-        });
-      }, 1000);
-
-    });
-
-    // Professional print functionality
-    function printCV() {
-      window.print();
-    }
-
-    // Add keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey && e.key === 'p') {
-        e.preventDefault();
-        printCV();
-      }
-    });
-  </script>
-
+</div>
+</div>
+</footer>
+<script>// Enhanced animations and interactions  document.addEventListener('DOMContentLoaded', function() {      // Intersection Observer for fade-in animations   const observerOptions = {    threshold: 0.1,    rootMargin: '0px 0px -50px 0px'   };   const observer = new IntersectionObserver((entries) => {    entries.forEach(entry => {     if (entry.isIntersecting) {      entry.target.style.opacity = '1';      entry.target.style.transform = 'translateY(0)';            // Animate skill progress bars      const progressBars = entry.target.querySelectorAll('.progress-fill');      progressBars.forEach(bar => {       setTimeout(() => {        bar.style.transition = 'width 1.5s ease-out';       }, 200);      });     }    });   }, observerOptions);   // Observe all sections   document.querySelectorAll('.section').forEach(section => {    section.style.opacity = '0';    section.style.transform = 'translateY(30px)';    section.style.transition = 'all 0.8s ease-out';    observer.observe(section);   });   // Smooth scroll for anchor links   document.querySelectorAll('a[href^="#"]').forEach(anchor => {    anchor.addEventListener('click', function (e) {     e.preventDefault();     const target = document.querySelector(this.getAttribute('href'));     if (target) {      target.scrollIntoView({       behavior: 'smooth',       block: 'start'      });     }    });   });   // Enhanced card hover effects   document.querySelectorAll('.card').forEach(card => {    card.addEventListener('mouseenter', function() {     this.style.transform = 'translateY(-8px)';    });        card.addEventListener('mouseleave', function() {     this.style.transform = 'translateY(-4px)';    });   });   // Skill item interactions   document.querySelectorAll('.skill-item').forEach(item => {    item.addEventListener('mouseenter', function() {     const progressBar = this.querySelector('.progress-fill');     if (progressBar) {      progressBar.style.boxShadow = '0 0 10px rgba(79, 139, 249, 0.5)';     }    });        item.addEventListener('mouseleave', function() {     const progressBar = this.querySelector('.progress-fill');     if (progressBar) {      progressBar.style.boxShadow = 'none';     }    });   });   // Add loading animation to progress bars   setTimeout(() => {    document.querySelectorAll('.progress-fill').forEach(bar => {     const width = bar.style.width;     bar.style.width = '0%';     setTimeout(() => {      bar.style.width = width;     }, 100);    });   }, 1000);  });  // Professional print functionality  function printCV() {   window.print();  }  // Add keyboard navigation  document.addEventListener('keydown', function(e) {   if (e.ctrlKey && e.key === 'p') {    e.preventDefault();    printCV();   }  });</script>
 </body>
 </html>
-
-
-
