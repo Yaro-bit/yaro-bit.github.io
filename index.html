@@ -1,664 +1,101 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Yaroslav Volokhodko - Enthusiast Developer in Java, Vibecoder, Problem-solver &amp; Management Expert</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>
-:root {
-  --bg-primary: #0e1117;
-  --bg-secondary: #161b22;
-  --bg-card: #1c212b;
-  --accent: #4f8bf9;
-  --text-primary: #f1f3f6;
-  --text-secondary: #c9d1d9;
-  --text-muted: #8b949e;
-  --border: #30363d;
-  --radius: 12px;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
-body {
-  font-family: var(--font-sans);
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  line-height: 1.6;
-  margin: 0;
-}
-.container { max-width: 1200px; margin: auto; padding: 0 24px; }
-header {
-  display: grid;
-  grid-template-columns: 200px 1fr 300px;
-  gap: 40px;
-  align-items: center;
-  padding: 80px 0;
-}
-@media (max-width: 900px) {
-  header { grid-template-columns: 1fr; text-align: center; }
-}
-.profile-image {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
-  box-shadow: var(--shadow);
-  object-fit: cover;
-}
-.name {
-  font-size: 2.8rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, var(--accent), #77aaff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.title { font-size: 1.3rem; color: var(--text-secondary); margin-top: 8px; }
-.summary {
-  background: rgba(255,255,255,0.03);
-  border-left: 3px solid var(--accent);
-  padding: 16px;
-  border-radius: var(--radius);
-  color: var(--text-secondary);
-  max-width: 600px;
-}
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: white;
-  background: var(--accent);
-  font-weight: 500;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-.btn:hover { background: #3a6fe0; }
-.section { margin: 80px 0; }
-.section-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 24px;
-  border-left: 4px solid var(--accent);
-  padding-left: 12px;
-}
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  margin-bottom: 24px;
-  transition: 0.3s;
-}
-.card:hover { border-color: var(--accent); transform: translateY(-2px); }
-.timeline-item { margin-bottom: 32px; }
-.timeline-title { font-size: 1.2rem; font-weight: 600; color: var(--text-primary); }
-.timeline-subtitle { color: var(--accent); margin-bottom: 6px; }
-.timeline-period {
-  display: inline-block;
-  background: rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 4px 10px;
-  font-size: 0.85rem;
-  margin-bottom: 8px;
-}
-.timeline-description { color: var(--text-secondary); }
-.footer {
-  text-align: center;
-  padding: 40px 0;
-  color: var(--text-muted);
-  border-top: 1px solid var(--border);
-}
-.footer a {
-  color: var(--accent);
-  margin: 0 10px;
-  text-decoration: none;
-}
-.footer a:hover { text-decoration: underline; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaroslav Volokhodko - CV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<!-- Header -->
-<header class="header">
-<div class="container">
-<div class="header-content">
-<div class="profile-section">
-<div class="profile-image-container">
-<img alt="Yaroslav Volokhodko" class="profile-image" src="./avatar.png"/>
-</div>
-<span class="badge badge--primary">Open to Work</span>
-</div>
-<div class="header-main">
-<h1 class="name">Yaroslav Volokhodko</h1>
-<h2 class="title">Java Developer &amp; Business Management Expert</h2>
-<p class="summary">
-            Passionate Java developer with strong business management background. 
-            Combining technical enthusiasm with proven expertise in operations management, 
-            process optimization, and customer relations to bridge business and technology.
-          </p>
-<div class="header-actions">
-<a class="btn btn-secondary" href="#experience">
-<i class="fas fa-briefcase"></i>
-              View Portfolio
-            </a>
-<a class="btn btn-ghost" href="https://github.com/Yaro-bit" target="_blank">
-<i class="fab fa-github"></i>
-              GitHub
-            </a>
-</div>
-</div>
-<div class="contact-section">
-<div class="contact-header">
-<div class="contact-title">Let's Connect</div>
-<div class="contact-subtitle">Always open for opportunities</div>
-</div>
-<div class="contact-info">
-<div class="contact-item">
-<i class="fas fa-map-marker-alt icon icon--sm"></i>
-<span>Linz, Austria</span>
-</div>
-<div class="contact-item">
-<i class="fas fa-flag icon icon--sm"></i>
-</div>
-</div>
-<div class="contact-actions">
-<a class="btn btn--sm btn-primary btn--full" href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" target="_blank">
-<i class="fab fa-linkedin"></i>
-              LinkedIn Profile
-            </a>
-<a class="btn btn--sm btn-secondary btn--full" href="#skills">
-<i class="fas fa-code"></i>
-              View Skills
-            </a>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- Main Content -->
-<main class="main-content">
-<div class="container">
-<!-- Professional Experience -->
-<section class="section fade-in" id="experience">
-<div class="section-header">
-<h2 class="section-title">Professional Experience</h2>
-<div class="section-line"></div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="timeline-item">
-<div class="timeline-title">Technical Support Specialist &amp; Customer Consultant</div>
-<div class="timeline-subtitle">NTS Retail</div>
-<span class="timeline-period">Feb 2023 – Present</span>
-<div class="timeline-description">
-                Provide comprehensive technical support for enterprise telecom POS systems through Jira, email, phone, and web conferences. Collaborate with development and project teams to troubleshoot complex technical issues. Utilize SQL, Postman, Wildfly, Keycloak, OpenShift, Helm, and RabbitMQ for system analysis and problem resolution while developing Java programming skills.
-              </div>
-</div>
-<div class="timeline-item">
-<div class="timeline-title">Sales Representative &amp; Export Operations Manager</div>
-<div class="timeline-subtitle">Polytec EMC Engineering GmbH</div>
-<span class="timeline-period">Nov 2019 – Nov 2022</span>
-<div class="timeline-description">
-                Managed comprehensive customer relationships in German and English markets, overseeing complete order lifecycle from processing to delivery. Handled complex export documentation, ERP system maintenance, and international compliance requirements. Led project coordination, travel logistics, and trade fair organization while maintaining strict adherence to customs regulations and sanctions protocols.
-              </div>
-</div>
-<div class="timeline-item">
-<div class="timeline-title">Volunteer Technical Translator</div>
-<div class="timeline-subtitle">Austrian Red Cross</div>
-<span class="timeline-period">Mar 2022 – Nov 2022</span>
-<div class="timeline-description">
-                Provided critical translation services for Ukrainian and Russian speakers during humanitarian crisis response. Coordinated with law enforcement and humanitarian organizations to facilitate effective communication. Organized community support networks and managed digital communication channels for refugee assistance programs.
-              </div>
-</div>
-<div class="timeline-item">
-<div class="timeline-title">Customs Operations Specialist &amp; Digital Coordinator</div>
-<div class="timeline-subtitle">GARTNER KG</div>
-<span class="timeline-period">Aug 2017 – Nov 2019</span>
-<div class="timeline-description">
-                Managed end-to-end customs and international trade operations, ensuring full compliance with Austrian and EU regulations. Led digital transformation initiatives to optimize logistics, financial, and business processes. Specialized in indirect tax reporting, customs audit preparation, and AEO certification support.
-              </div>
-</div>
-</div>
-</div>
-</section>
-<!-- Technical Expertise -->
-<section class="section fade-in" id="skills">
-<div class="section-header">
-<h2 class="section-title">Technical Expertise</h2>
-<div class="section-line"></div>
-</div>
-<div class="grid grid--2">
-<div class="card">
-<div class="card-content">
-<div class="skills-category">
-<div class="skills-header">
-<i class="fas fa-code icon icon--md"></i>
-<h3 class="skills-title">Programming &amp; Development</h3>
-</div>
-<div class="skills-grid">
-<div class="skill-item">
-<span class="skill-name">Java (Core, OOP Fundamentals)</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--intermediate">Learning</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 60%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Spring Boot &amp; Frameworks</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--intermediate">Developing</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 45%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">SQL &amp; Database Basics</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--intermediate">Intermediate</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 70%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Testing &amp; Debugging</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--basic">Basic</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 40%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="skills-category">
-<div class="skills-header">
-<i class="fas fa-server icon icon--md"></i>
-<h3 class="skills-title">DevOps &amp; Tools (Learning)</h3>
-</div>
-<div class="skills-grid">
-<div class="skill-item">
-<span class="skill-name">OpenShift &amp; Kubernetes</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--basic">Basic</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 35%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Wildfly &amp; Application Servers</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--intermediate">Intermediate</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 55%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Message Queuing (RabbitMQ)</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--basic">Basic</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 30%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Security (Keycloak)</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--basic">Basic</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 35%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="skills-category">
-<div class="skills-header">
-<i class="fas fa-tools icon icon--md"></i>
-<h3 class="skills-title">Professional Tools &amp; Systems</h3>
-</div>
-<div class="skills-grid">
-<div class="skill-item">
-<span class="skill-name">Jira &amp; Project Management</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--expert">Expert</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 95%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Postman &amp; API Testing</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--advanced">Advanced</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 80%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">SAP &amp; ERP Systems</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--expert">Expert</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 90%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Git &amp; Version Control</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--intermediate">Intermediate</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 60%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="skills-category">
-<div class="skills-header">
-<i class="fas fa-chart-line icon icon--md"></i>
-<h3 class="skills-title">Business &amp; Leadership</h3>
-</div>
-<div class="skills-grid">
-<div class="skill-item">
-<span class="skill-name">Process Optimization</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--expert">Expert</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 95%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Technical Leadership</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--advanced">Advanced</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 85%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Customer Relations</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--expert">Expert</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 90%"></div>
-</div>
-</div>
-</div>
-<div class="skill-item">
-<span class="skill-name">Quality Management</span>
-<div class="skill-level">
-<span class="skill-badge skill-badge--advanced">Advanced</span>
-<div class="progress-bar">
-<div class="progress-fill" style="width: 85%"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Education & Training -->
-<section class="section fade-in">
-<div class="section-header">
-<h2 class="section-title">Education &amp; Professional Development</h2>
-<div class="section-line"></div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="education-timeline">
-<div class="education-item">
-<div class="timeline-title">Advanced Java Development Mentoring</div>
-<div class="timeline-subtitle">Private Technical Mentoring Program</div>
-<div class="timeline-period">Januar 2025 – August 2025</div>
-<div class="timeline-description">
-                  Intensive one-on-one mentoring program focusing on Java fundamentals, object-oriented programming principles, 
-                  testing methodologies, software design patterns, and hands-on project development to build professional development skills.
-                </div>
-</div>
-<div class="education-item">
-<div class="timeline-title">Java Software Developer Certification Program</div>
-<div class="timeline-subtitle">WIFI Professional Education Center</div>
-<div class="timeline-period">September 2024 – Jul 2025</div>
-<div class="timeline-description">
-                  Comprehensive Java development program covering Spring Boot framework, database integration fundamentals, 
-                  RESTful API development, and practical project implementation to transition into software development.
-                </div>
-</div>
-<div class="education-item">
-<div class="timeline-title">Business Informatics Studies (interrupted)</div>
-<div class="timeline-subtitle">Hamburger Fern-Hochschule - Johannes Kepler University</div>
-<div class="timeline-period">Sept 2022 – Aug 2024</div>
-<div class="timeline-description">
-                  Advanced distance learning program focusing on business information systems, 
-                  digital transformation strategies, and enterprise software architecture.
-                </div>
-</div>
-<div class="education-item">
-<div class="timeline-title">University Entrance Qualification</div>
-<div class="timeline-subtitle">WIFI Professional Education Center</div>
-<div class="timeline-period">Jan 2020 – Oct 2021</div>
-<div class="timeline-description">
-                  Comprehensive academic preparation program covering German language proficiency, 
-                  advanced mathematics, and English language certification for higher education access.
-                </div>
-</div>
-<div class="education-item">
-<div class="timeline-title">Master Certificate in Logistics Management</div>
-<div class="timeline-subtitle">WIFI Professional Education Center</div>
-<div class="timeline-period">Sept 2017 – Mar 2019</div>
-<div class="timeline-description">
-                  Advanced management program specializing in supply chain optimization, warehouse management systems, 
-                  international logistics operations, and strategic process improvement methodologies.
-                </div>
-</div>
-<div class="education-item">
-<div class="timeline-title">Certified Logistics Specialist</div>
-<div class="timeline-subtitle">REXEL Austria GmbH</div>
-<div class="timeline-period">Jul 2011 – Sep 2014</div>
-<div class="timeline-description">
-                  Professional apprenticeship program in logistics operations, warehouse management, 
-                  inventory control systems, and international trade documentation procedures.
-                </div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Languages & Certifications -->
-<section class="section fade-in">
-<div class="grid grid--2">
-<div class="card">
-<div class="card-content">
-<div class="section-header">
-<h3 class="section-title section-title--sm">Language Proficiency</h3>
-<div class="section-line"></div>
-</div>
-<div class="grid grid--4">
-<div class="surface-item surface-item--center">
-<div class="info-title">German</div>
-<div class="info-subtitle">Native Proficiency</div>
-</div>
-<div class="surface-item surface-item--center">
-<div class="info-title">Ukrainian</div>
-<div class="info-subtitle">Native Proficiency</div>
-</div>
-<div class="surface-item surface-item--center">
-<div class="info-title">English</div>
-<div class="info-subtitle">Professional Working</div>
-</div>
-<div class="surface-item surface-item--center">
-<div class="info-title">Russian</div>
-<div class="info-subtitle">Professional Working</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="section-header">
-<h3 class="section-title section-title--sm">Professional Certifications</h3>
-<div class="section-line"></div>
-</div>
-<div style="display: grid; gap: 16px;">
-<div class="surface-item">
-<div class="info-title">Certified Professional Instructor</div>
-<div class="info-subtitle">Trade, Logistics &amp; Transport Operations • WIFI Wels (2019)</div>
-</div>
-<div class="surface-item">
-<div class="info-title">Certified Customs Specialist P36</div>
-<div class="info-subtitle">International Trade &amp; Customs Procedures • Austria Customs Academy (2018)</div>
-</div>
-<div class="surface-item">
-<div class="info-title">Licensed Crane Operator</div>
-<div class="info-subtitle">Heavy Equipment Operations • Steel Foundation (2016)</div>
-</div>
-<div class="surface-item">
-<div class="info-title">Certified Forklift Operator</div>
-<div class="info-subtitle">Material Handling Equipment • TBF (2013)</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Professional Values & Interests -->
-<section class="section fade-in">
-<div class="section-header">
-<h2 class="section-title">Professional Values &amp; Personal Interests</h2>
-<div class="section-line"></div>
-</div>
-<div class="grid grid--3">
-<div class="card">
-<div class="card-content">
-<div class="section-header">
-<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-compass"></i> Core Values</h3>
-</div>
-<div class="values-grid">
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-handshake"></i></div>
-<div class="value-name">Integrity</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
-<div class="value-name">Continuous Learning</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-shield-alt"></i></div>
-<div class="value-name">Accountability</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-balance-scale"></i></div>
-<div class="value-name">Collaborative Mindset</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="section-header">
-<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-rocket"></i> Professional Approach</h3>
-</div>
-<div class="values-grid">
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-chart-line"></i></div>
-<div class="value-name">Process Excellence</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-users"></i></div>
-<div class="value-name">Team Leadership</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-lightbulb"></i></div>
-<div class="value-name">Innovation Drive</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-puzzle-piece"></i></div>
-<div class="value-name">Solution-Oriented</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-content">
-<div class="section-header">
-<h3 class="section-title" style="font-size: 1.4rem;"><i class="fas fa-heart"></i> Personal Interests</h3>
-</div>
-<div class="values-grid">
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-skating"></i></div>
-<div class="value-name">Skateboarding</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-microchip"></i></div>
-<div class="value-name">Technology Trends</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-robot"></i></div>
-<div class="value-name">Tech Culture</div>
-</div>
-<div class="value-item">
-<div class="value-icon"><i class="fas fa-code"></i></div>
-<div class="value-name">Open Source</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-<!-- Footer -->
-<footer class="footer">
-<div class="container">
-<div class="footer-content">
-<div class="social-links">
-<a class="social-link" href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" target="_blank" title="LinkedIn Profile">
-<i class="fab fa-linkedin"></i>
-</a>
-<a class="social-link" href="https://github.com/Yaro-bit" target="_blank" title="GitHub Portfolio">
-<i class="fab fa-github"></i>
-</a>
-<a class="social-link" href="https://puginarug.com/" target="_blank" title="Personal Project">
-<i class="fas fa-paw"></i>
-</a>
-</div>
-<p class="footer-text">
-          © 2025 Yaroslav Volokhodko. All rights reserved.
-        </p>
-<p class="footer-tagline">
-          Java Developer • Management Expert • Process Optimization Specialist
-        </p>
-</div>
-</div>
-</footer>
+<body class="bg-gray-900 text-gray-200 font-sans leading-relaxed p-8 md:p-16">
+  <header class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-white">Yaroslav Volokhodko</h1>
+    <p class="text-lg text-gray-400">Java Developer & Business Management Expert</p>
+    <p class="text-gray-400">Linz, Austria</p>
+    <p class="mt-2 space-x-3">
+      <a href="https://www.linkedin.com/in/yaroslav-v-b7876a211/" target="_blank" class="text-blue-400 hover:underline">LinkedIn</a>
+      <span>|</span>
+      <a href="https://github.com/Yaro-bit" target="_blank" class="text-blue-400 hover:underline">GitHub</a>
+    </p>
+  </header>
 
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Profile Summary</h2>
+    <p>Passionate Java developer with strong business management background. Combining technical enthusiasm with expertise in operations management, process optimization, and customer relations to bridge business and technology.</p>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Professional Experience</h2>
+
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-xl font-semibold text-white">Technical Support Specialist & Customer Consultant</h3>
+        <p class="italic text-gray-400">NTS Retail | Feb 2023 – Present</p>
+        <p>Provide technical support for enterprise telecom POS systems using Jira, SQL, Postman, Wildfly, Keycloak, OpenShift, Helm, and RabbitMQ. Collaborate with development and project teams to resolve complex technical issues and develop Java programming skills.</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-white">Sales Representative & Export Operations Manager</h3>
+        <p class="italic text-gray-400">Polytec EMC Engineering GmbH | Nov 2019 – Nov 2022</p>
+        <p>Managed customer relationships across German and English markets, handling export documentation, ERP processes, and compliance. Coordinated trade fairs and ensured customs and sanctions adherence.</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-white">Volunteer Technical Translator</h3>
+        <p class="italic text-gray-400">Austrian Red Cross | Mar 2022 – Nov 2022</p>
+        <p>Provided translation services for Ukrainian and Russian speakers during crisis response, supporting humanitarian coordination and community programs.</p>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold text-white">Customs Operations Specialist & Digital Coordinator</h3>
+        <p class="italic text-gray-400">GARTNER KG | Aug 2017 – Nov 2019</p>
+        <p>Led customs and trade operations, ensured EU compliance, and initiated digital transformation projects in logistics and financial workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Technical Skills</h2>
+    <ul class="space-y-1">
+      <li><span class="font-semibold text-gray-300">Programming:</span> Java, Spring Boot, SQL, Testing & Debugging</li>
+      <li><span class="font-semibold text-gray-300">DevOps Tools:</span> OpenShift, Kubernetes, Wildfly, Keycloak, RabbitMQ</li>
+      <li><span class="font-semibold text-gray-300">Professional Tools:</span> Jira, Postman, SAP, Git</li>
+      <li><span class="font-semibold text-gray-300">Business Skills:</span> Process Optimization, Technical Leadership, Customer Relations, Quality Management</li>
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Education & Training</h2>
+    <div class="space-y-4">
+      <p><span class="font-semibold">Advanced Java Development Mentoring</span><br><span class="italic text-gray-400">Private Program | Jan 2025 – Aug 2025</span></p>
+      <p><span class="font-semibold">Java Software Developer Certification Program</span><br><span class="italic text-gray-400">WIFI Professional Education Center | Sep 2024 – Jul 2025</span></p>
+      <p><span class="font-semibold">Business Informatics Studies (interrupted)</span><br><span class="italic text-gray-400">Hamburger Fern-Hochschule / JKU | 2022 – 2024</span></p>
+      <p><span class="font-semibold">Master Certificate in Logistics Management</span><br><span class="italic text-gray-400">WIFI Professional Education Center | 2017 – 2019</span></p>
+      <p><span class="font-semibold">Certified Logistics Specialist</span><br><span class="italic text-gray-400">REXEL Austria GmbH | 2011 – 2014</span></p>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Certifications</h2>
+    <ul class="list-disc list-inside space-y-1">
+      <li>Certified Professional Instructor – WIFI Wels (2019)</li>
+      <li>Certified Customs Specialist P36 – Austria Customs Academy (2018)</li>
+      <li>Licensed Crane Operator – Steel Foundation (2016)</li>
+      <li>Certified Forklift Operator – TBF (2013)</li>
+    </ul>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-white border-b border-gray-700 pb-1 mb-4">Languages</h2>
+    <ul class="space-y-1">
+      <li>German – Native</li>
+      <li>Ukrainian – Native</li>
+      <li>English – Professional Working</li>
+      <li>Russian – Professional Working</li>
+    </ul>
+  </section>
+
+  <footer class="text-center text-gray-500 text-sm border-t border-gray-800 pt-6">
+    © 2025 Yaroslav Volokhodko. All rights reserved.
+  </footer>
 </body>
 </html>
